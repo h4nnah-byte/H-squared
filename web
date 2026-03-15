@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hannah Hamid · Data in Progress</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: #0A192F;
+            background-image: 
+                linear-gradient(rgba(122, 199, 224, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(122, 199, 224, 0.03) 1px, transparent 1px),
+                radial-gradient(rgba(122, 199, 224, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px, 40px 40px, 20px 20px;
+            font-family: 'Inter', sans-serif;
+            color: #1A2A3A;
+            line-height: 1.5;
+            min-height: 100vh;
+        }
+        
+        /* Initial splash screen with fade animation */
+        .splash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 200;
+            pointer-events: none;
+            animation: fadeOutSplash 1.2s ease-in-out forwards;
+            animation-delay: 1.5s;
+        }
+        
+        .splash-card {
+            background: transparent;
+            border-radius: 28px;
+            padding: 2px;
+            max-width: 600px;
+            width: 90%;
+            animation: floatIn 0.8s ease-out;
+        }
+        
+        .splash-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(4px);
+            border-radius: 26px;
+            padding: 3rem 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .splash-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .splash-h {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 4rem;
+            font-weight: 700;
+            letter-spacing: -2px;
+            color: #3a4e7c;
+            background: rgba(58, 78, 124, 0.04);
+            padding: 0.3rem 1.2rem;
+            border-left: 4px solid #3a4e7c;
+            border-radius: 0 10px 10px 0;
+            display: inline-block;
+            line-height: 1.2;
+        }
+        
+        .splash-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #3a4e7c;
+            letter-spacing: -0.5px;
+            text-align: center;
+            line-height: 1.2;
+            white-space: nowrap;
+        }
+        
+        /* Main content - starts hidden, fades in */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            opacity: 0;
+            animation: fadeInContent 1.2s ease-in-out forwards;
+            animation-delay: 2s;
+        }
+        
+        /* Animations */
+        @keyframes floatIn {
+            0% {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeOutSplash {
+            0% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            70% {
+                opacity: 0.5;
+                transform: scale(1.05);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(1.1);
+                visibility: hidden;
+            }
+        }
+        
+        @keyframes fadeInContent {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        
+        /* Navigation */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 1rem;
+            z-index: 100;
+            background: rgba(10, 25, 47, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 100px;
+            padding: 0.6rem 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 1rem;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .logo-h {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -2px;
+            color: white;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.1rem 0.7rem;
+            border-left: 3px solid rgba(255, 255, 255, 0.5);
+            border-radius: 0 6px 6px 0;
+            display: inline-block;
+            line-height: 1.2;
+            backdrop-filter: blur(4px);
+        }
+        
+        .logo-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: white;
+            letter-spacing: -0.3px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+        
+        .nav-links a {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            text-decoration: none;
+            color: white;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+            padding: 0.25rem 0;
+            border-bottom: 2px solid transparent;
+        }
+        
+        .nav-links a:hover {
+            color: #9abdef;
+            border-bottom-color: #9abdef;
+        }
+        
+        .nav-links a.active {
+            color: #9abdef;
+            border-bottom-color: #9abdef;
+            font-weight: 600;
+        }
+        
+        .card {
+            background: transparent;
+            border-radius: 28px;
+            padding: 2px;
+        }
+        
+        .card-content {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(4px);
+            border-radius: 26px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        }
+        
+        .inner-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(4px);
+            border-radius: 18px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        .code-cell {
+            background: rgba(10, 25, 47, 0.03);
+            border-left: 4px solid #2A6B7C;
+            font-family: 'JetBrains Mono', monospace;
+            padding: 1.2rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+        }
+        
+        .code-prompt {
+            color: #4A5A6A;
+            font-size: 0.8rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            gap: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .code-prompt span {
+            color: #2A6B7C;
+        }
+        
+        .code-output {
+            color: #0A192F;
+            font-size: 1rem;
+        }
+        
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .kpi-card {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 16px;
+            padding: 1.2rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(2px);
+        }
+        
+        .kpi-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0A192F;
+            font-family: 'Playfair Display', serif;
+            line-height: 1.2;
+        }
+        
+        .kpi-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #2A6B7C;
+            font-weight: 600;
+        }
+        
+        .name-with-h {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .h-squared {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -2px;
+            color: #3a4e7c;
+            background: rgba(58, 78, 124, 0.04);
+            padding: 0.2rem 0.9rem;
+            border-left: 4px solid #3a4e7c;
+            border-radius: 0 8px 8px 0;
+            display: inline-block;
+            line-height: 1.2;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #0A192F;
+            line-height: 1.1;
+            white-space: nowrap;
+        }
+        
+        .highlight-bold {
+            font-weight: 700;
+            color: #1A4B5C;
+        }
+        
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #0A192F;
+            border-bottom: 2px solid rgba(42, 107, 124, 0.2);
+            padding-bottom: 0.5rem;
+        }
+        
+        h2 span.section-number {
+            color: #2A6B7C;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            margin-right: 1rem;
+            opacity: 0.7;
+        }
+        
+        h3 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            color: #2A6B7C;
+            margin-bottom: 1rem;
+        }
+        
+        .grid-cv {
+            display: grid;
+            grid-template-columns: 1.8fr 1.2fr;
+            gap: 1.5rem;
+        }
+        
+        .grid-experience {
+            display: grid;
+            grid-template-columns: 1.2fr 1.8fr;
+            gap: 1.5rem;
+        }
+        
+        .grid-sidebar {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1.5rem;
+        }
+        
+        .skill-tag {
+            display: inline-block;
+            background: rgba(42, 107, 124, 0.1);
+            color: #1A4B5C;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+            border: 1px solid rgba(42, 107, 124, 0.2);
+        }
+        
+        .upcoming-skill-tag {
+            display: inline-block;
+            background: rgba(42, 107, 124, 0.1);
+            color: #1A4B5C;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+            border: 1px solid rgba(42, 107, 124, 0.2);
+        }
+        
+        .badge {
+            background: rgba(42, 107, 124, 0.1);
+            color: #1A4B5C;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            border: 1px solid rgba(42, 107, 124, 0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.2rem;
+        }
+        
+        .date-badge {
+            background: rgba(42, 107, 124, 0.1);
+            color: #1A4B5C;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            border: 1px solid rgba(42, 107, 124, 0.2);
+            display: inline-block;
+            width: fit-content;
+        }
+        
+        .module-row {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            padding: 0.6rem 0;
+            border-bottom: 1px dashed rgba(10, 25, 47, 0.1);
+            font-size: 0.95rem;
+        }
+        
+        .module-year {
+            font-family: 'JetBrains Mono', monospace;
+            color: #2A6B7C;
+        }
+        
+        .badge-construction {
+            background: rgba(200, 150, 50, 0.1);
+            color: #8B6B2A;
+            border-color: rgba(200, 150, 50, 0.3);
+            font-size: 0.7rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            display: inline-block;
+            width: fit-content;
+        }
+        
+        .photo-circle {
+            background: rgba(10, 25, 47, 0.05);
+            border-radius: 50%;
+            height: 150px;
+            width: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #5A6A7A;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            border: 3px solid rgba(42, 107, 124, 0.4);
+            object-fit: cover;
+        }
+        
+        .photo-sixteen-nine {
+            background: rgba(10, 25, 47, 0.05);
+            border-radius: 20px;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #5A6A7A;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            border: 2px solid rgba(42, 107, 124, 0.3);
+            object-fit: cover;
+            margin: 1rem 0;
+        }
+        
+        .photo-certificate {
+            background: rgba(10, 25, 47, 0.05);
+            border-radius: 24px;
+            width: 100%;
+            max-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #5A6A7A;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            border: 2px solid rgba(42, 107, 124, 0.3);
+            object-fit: contain;
+            margin: 1rem 0;
+        }
+        
+        .photo-full {
+            background: rgba(10, 25, 47, 0.05);
+            border-radius: 20px;
+            width: 100%;
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #5A6A7A;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            border: 2px solid rgba(42, 107, 124, 0.3);
+            object-fit: cover;
+            margin-top: 1rem;
+        }
+        
+        .float-left {
+            float: left;
+            margin: 0 1.5rem 1rem 0;
+        }
+        
+        .float-right {
+            float: right;
+            margin: 0 0 1rem 1.5rem;
+        }
+        
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+        
+        .project-highlight {
+            background: rgba(42, 107, 124, 0.1);
+            border-radius: 24px;
+            padding: 1.5rem;
+            border: 1px solid rgba(42, 107, 124, 0.3);
+            margin: 1.5rem 0;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-card {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(2px);
+            transition: transform 0.2s;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-4px);
+        }
+        
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-title {
+            font-weight: 600;
+            color: #0A192F;
+            margin-bottom: 0.25rem;
+        }
+        
+        .contact-detail {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: #2A6B7C;
+            word-break: break-all;
+        }
+        
+        .contact-detail a {
+            color: #2A6B7C;
+            text-decoration: none;
+        }
+        
+        .contact-detail a:hover {
+            text-decoration: underline;
+        }
+        
+        .github-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(4px);
+            border-radius: 18px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            height: fit-content;
+        }
+        
+        .status-banner {
+            border-radius: 100px;
+            padding: 0.8rem 2rem;
+            text-align: center;
+            font-weight: 500;
+            margin: 1rem 0;
+            width: 100%;
+        }
+        
+        .status-banner.green {
+            background: rgba(64, 145, 108, 0.15);
+            border: 1px solid rgba(64, 145, 108, 0.3);
+            color: #2d6a4f;
+        }
+        
+        .status-banner.orange {
+            background: rgba(244, 162, 97, 0.15);
+            border: 1px solid rgba(244, 162, 97, 0.3);
+            color: #bc6c25;
+        }
+        
+        .button-link {
+            display: inline-block;
+            background: rgba(42, 107, 124, 0.15);
+            color: #1A4B5C;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid rgba(42, 107, 124, 0.3);
+            transition: all 0.2s;
+            margin-top: 1rem;
+        }
+        
+        .button-link:hover {
+            background: rgba(42, 107, 124, 0.25);
+            transform: translateY(-2px);
+        }
+        
+        .footer-note {
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+            padding: 2rem 0 0.5rem 0;
+        }
+
+        .achievement-with-photo {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .achievement-date {
+            font-size: 0.9rem;
+            color: #4A5A6A;
+            margin-bottom: 0.25rem;
+        }
+
+        .no-border {
+            border-bottom: none;
+        }
+        
+        /* Bottom logo card - H² above, name on single line */
+        .bottom-logo-card {
+            background: transparent;
+            border-radius: 28px;
+            padding: 2px;
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        .bottom-logo-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(4px);
+            border-radius: 26px;
+            padding: 1.8rem 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .bottom-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            width: 100%;
+        }
+        
+        .bottom-h {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -2px;
+            color: #3a4e7c;
+            background: rgba(58, 78, 124, 0.04);
+            padding: 0.3rem 1.2rem;
+            border-left: 4px solid #3a4e7c;
+            border-radius: 0 10px 10px 0;
+            display: inline-block;
+            line-height: 1.2;
+        }
+        
+        .bottom-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #3a4e7c;
+            letter-spacing: -0.5px;
+            text-align: center;
+            line-height: 1.2;
+            white-space: nowrap;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .container {
+                padding: 1.5rem;
+            }
+            
+            .grid-cv, .grid-experience, .grid-sidebar {
+                gap: 1rem;
+            }
+        }
+        
+        @media (max-width: 800px) {
+            .kpi-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .grid-cv, .grid-experience, .grid-sidebar, .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav {
+                flex-direction: column;
+                gap: 1rem;
+                border-radius: 30px;
+                padding: 1rem;
+            }
+            
+            .logo-container {
+                margin-right: auto;
+            }
+            
+            .nav-links {
+                gap: 1.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .name-with-h {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+                white-space: normal;
+            }
+            
+            .splash-name {
+                font-size: 2.5rem;
+                white-space: normal;
+            }
+            
+            .splash-h {
+                font-size: 3rem;
+            }
+            
+            .float-left, .float-right {
+                float: none;
+                margin: 0 0 1rem 0;
+                display: block;
+            }
+            
+            .photo-circle {
+                margin: 0 auto 1rem auto;
+                float: none;
+            }
+            
+            .contact-grid {
+                margin-bottom: 1rem;
+            }
+            
+            .bottom-logo-card {
+                margin-top: 1.5rem;
+                max-width: 100%;
+            }
+        }
+        
+        @media (max-width: 500px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .card-content {
+                padding: 1.5rem;
+            }
+            
+            .inner-card {
+                padding: 1.2rem;
+            }
+            
+            .kpi-card {
+                padding: 1rem;
+            }
+            
+            .kpi-value {
+                font-size: 1.8rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .h-squared {
+                font-size: 1.8rem;
+            }
+            
+            .bottom-name {
+                font-size: 1.8rem;
+                white-space: normal;
+            }
+            
+            .bottom-h {
+                font-size: 2.5rem;
+            }
+            
+            .status-banner {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .nav-links a {
+                font-size: 0.85rem;
+            }
+        }
+        
+        @media (max-width: 350px) {
+            .kpi-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .bottom-name {
+                font-size: 1.5rem;
+            }
+            
+            .bottom-h {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Splash screen with logo card (fades out) -->
+    <div class="splash">
+        <div class="splash-card">
+            <div class="splash-content">
+                <div class="splash-logo">
+                    <span class="splash-h">H²</span>
+                    <span class="splash-name">HANNAH HAMID</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main website content (fades in) -->
+    <div class="container">
+        
+        <!-- Navigation -->
+        <div class="nav">
+            <div class="logo-container">
+                <span class="logo-h">H²</span>
+                <span class="logo-name">HANNAH HAMID</span>
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#cv" class="nav-link">CV</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+        </div>
+        
+        <!-- Home Section -->
+        <section id="home" class="card">
+            <div class="card-content">
+                <div style="display: flex; align-items: flex-start; gap: 2rem; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 250px;">
+                        <div class="name-with-h">
+                            <span class="h-squared">H²</span>
+                            <h1>HANNAH HAMID</h1>
+                        </div>
+                        
+                        <div style="font-size: 1.1rem; color: #2A6B7C; margin: 1rem 0;">
+                            Mathematics & Statistics BSc · QMUL · 2025-2029
+                        </div>
+                        <div style="margin: 1.5rem 0;" class="clearfix">
+                            <img src="https://www.dropbox.com/scl/fi/zz36l7bkn2xhjpldntzom/IMG_4435.jpeg?rlkey=2hhg85azy2m7bn21pd9crzye0&st=kdkc164a&raw=1" class="photo-circle float-left" style="margin-right: 1.5rem; object-fit: cover;" alt="Hannah Hamid profile">
+                            <div>
+                                <p style="margin-bottom: 1rem;">Hi, I'm Hannah, and data is my medium. I'm a first-year <span class="highlight-bold">Mathematics and Statistics</span> student, spending my days studying statistical methods and my nights teaching myself <span class="highlight-bold">Python</span>, <span class="highlight-bold">R</span>, and the art of <span class="highlight-bold">vibe coding</span>.</p>
+                                
+                                <p style="margin-bottom: 1rem;">Recently, I have been exploring how to use AI responsibly to uncover insights that help people make better decisions. Data science, to me, is about finding the story hidden between the numbers.</p>
+                                
+                                <p style="margin-bottom: 1rem;">Away from the code, I have a love for teaching GCSE Mathematics, which I have been doing since I finished the exams myself. Recently, I worked hard with a student to increase their grade from a Grade 2 to a 5 in Foundation. Teaching has taught me that when someone starts enjoying the process, the progress follows naturally.</p>
+                                
+                                <p><strong>Take a look around - consider this my way of teaching you what I've been learning.</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="code-cell">
+                    <div class="code-prompt">
+                        <span>>>> </span> print("This website was")
+                    </div>
+                    <div class="code-prompt">
+                        <span>... </span> print("vibe coded entirely by me!")
+                    </div>
+                    <div class="code-output">
+                        This website was<br>
+                        vibe coded entirely by me!
+                    </div>
+                    <div style="margin-top: 0.75rem; font-size: 0.8rem; color: #4A5A6A;">
+                        # built with AI assistance, designed and directed by me
+                    </div>
+                </div>
+                
+                <h3 style="margin: 2rem 0 1rem;">⌨️ CURRENT SNAPSHOT</h3>
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-value">91%</div>
+                        <div class="kpi-label">in Probability & Statistics</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-value">A*</div>
+                        <div class="kpi-label">in A-Level Mathematics</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-value">2</div>
+                        <div class="kpi-label">ACTIVE PROJECTS</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-value">'27-28</div>
+                        <div class="kpi-label">PLACEMENT YEAR</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ===== PROJECTS SECTION ===== -->
+        <section id="projects" class="card">
+            <div class="card-content">
+                <h2><span class="section-number">01</span> PROJECTS</h2>
+                
+                <!-- ===== CURRENT PROJECT - Confidence Intervals Essay ===== -->
+                <div class="project-highlight">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <h3 style="margin-bottom: 0;">📝 CONFIDENCE INTERVALS AND HYPOTHESIS TESTING</h3>
+                        <span class="date-badge">active · March 2026</span>
+                    </div>
+                    
+                    <!-- Research essay badge -->
+                    <div style="margin-bottom: 1rem;">
+                        <span style="background: rgba(156, 39, 176, 0.1); color: #6a1b9a; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.7rem; font-weight: 600; border: 1px solid rgba(156, 39, 176, 0.3); display: inline-flex; align-items: center; gap: 0.2rem;">📄 Research Essay</span>
+                    </div>
+                    
+                    <div style="margin-bottom: 1rem;">
+                        <p style="margin-bottom: 0.75rem;">As part of my university coursework, I was asked to research and provide an essay about confidence intervals and hypothesis testing. I found that they are fundamental to the framework of statistical reasoning, and helpful in making decisions in the presence of risk and uncertainty.</p>
+                        
+                        <p style="margin-bottom: 0.75rem;">Also, understanding the potential errors in these calculations is essential for the correct interpretation of such results.</p>
+                        
+                        <!-- Graph image -->
+                        <div style="margin: 1.5rem 0;">
+                            <img src="https://www.dropbox.com/scl/fi/iqflcbpulzs84e613vnj0/Graph.png?rlkey=1wbofjxp3quw1gu5wsj5auckv&st=hz5emibx&raw=1" alt="Graph showing confidence intervals for chocolate bar weights" style="max-width: 100%; border-radius: 12px; border: 2px solid rgba(42, 107, 124, 0.3);">
+                            <p style="font-size: 0.8rem; color: #6c757d; margin-top: 0.5rem; text-align: center;">Figure 1: Confidence interval (blue), null hypothesised value (red)</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Tags -->
+                    <div style="margin-bottom: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                        <span class="skill-tag">R</span>
+                        <span class="skill-tag">Statistics</span>
+                        <span class="skill-tag">Hypothesis Testing</span>
+                        <span class="skill-tag">Academic Writing</span>
+                    </div>
+                    
+                    <!-- Link to full essay (replace # with your URL) -->
+                    <a href="#" target="_blank" class="button-link" style="margin-top: 0.5rem;">🔗 Read the full essay →</a>
+                </div>
+                
+                <div class="grid-sidebar">
+                    <div>
+                        <!-- AI Bias Auditor (FIRST in main column) -->
+                        <div class="inner-card" style="margin-bottom: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                <h3 style="margin-bottom: 0;">🤖 AI BIAS AUDITOR</h3>
+                                <span class="date-badge">March 2026</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <span class="badge" style="background: rgba(255, 215, 0, 0.15); color: #8B6B2A; border-color: rgba(255, 215, 0, 0.3);">🏆 Best Overall Presentation · QMUL Hackathon</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <p>I had originally joined the hackathon for the experience, but it seems our team managed to leave with so much more! We had the opportunity to learn vibe coding, the importance of well-trained AI, and how to analyse data using such.</p>
+                                <p style="margin-top: 0.75rem;">The chosen topic had my team quantifying AI bias to show the significant risks of using AI in companies without the proper training of both the AI and us humans.</p>
+                                <p style="margin-top: 0.75rem;">I also vibe-coded my very first website in just under 12 hours. It may be full of bugs, but that just adds character!</p>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">Data Analysis</span>
+                                <span class="skill-tag">Ethics</span>
+                            </div>
+                            <a href="https://www.linkedin.com/in/hannahhamid/" target="_blank" class="button-link">🔗 See my LinkedIn post about it →</a>
+                            
+                            <img src="https://www.dropbox.com/scl/fi/8zf0r6onwjxtqsg8xjay6/577e37fd-15cd-407a-a2a6-546d4e0b4b5f.jpeg?rlkey=nue95ecdsgh595hhbqpfgfhb1&st=sqrkkc1b&raw=1" class="photo-sixteen-nine" alt="Hackathon project photo">
+                        </div>
+                        
+                        <!-- This Website (SECOND in main column) -->
+                        <div class="inner-card" style="margin-bottom: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                <h3 style="margin-bottom: 0;">🌐 THIS WEBSITE</h3>
+                                <span class="date-badge">in progress · March 2026</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <span class="badge" style="background: rgba(42, 107, 124, 0.1);">vibe-coded</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <p>Personal portfolio + data playground. Built in Google Colab with HTML/CSS. Features live-updating data points and metrics dashboard.</p>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <span class="skill-tag">HTML</span>
+                                <span class="skill-tag">CSS</span>
+                                <span class="skill-tag">JavaScript</span>
+                                <span class="skill-tag">vibe coding</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="inner-card" style="margin-bottom: 1.5rem;">
+                            <h3>🧠 CURRENTLY LEARNING</h3>
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                                <span class="skill-tag">R</span>
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">HTML</span>
+                                <span class="skill-tag">Excel</span>
+                                <span class="skill-tag">Google Colab</span>
+                            </div>
+                        </div>
+                        
+                        <div class="inner-card" style="margin-bottom: 1.5rem;">
+                            <h3>📚 CURRENTLY READING</h3>
+                            <ul style="list-style: none;">
+                                <li style="margin-bottom: 0.75rem;">• "How Life Imitates Chess" - Garry Kasparov</li>
+                                <li style="margin-bottom: 0.75rem;">• "The Adventures of Sherlock Holmes" - Sir Arthur Conan Doyle</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="github-card">
+                            <h3 style="margin-bottom: 1rem;">🐙 GITHUB</h3>
+                            <div style="font-family: 'JetBrains Mono'; background: rgba(10,25,47,0.05); padding: 0.75rem; border-radius: 8px;">
+                                <div><a href="https://github.com/h4nnah-byte" target="_blank" style="color: #2A6B7C; text-decoration: none;">github.com/h4nnah-byte</a></div>
+                                <div style="font-size:0.8rem; color:#4A5A6A;">building in public</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CV Section -->
+        <section id="cv" class="card">
+            <div class="card-content">
+                <h2><span class="section-number">02</span> CV · EDUCATION & SKILLS</h2>
+                
+                <div class="grid-cv">
+                    <div>
+                        <div class="inner-card">
+                            <h3>EDUCATION</h3>
+                            <div class="module-row">
+                                <span class="module-year">2025-29</span>
+                                <span>Queen Mary University of London · Mathematics and Statistics BSc</span>
+                            </div>
+                            <div class="module-row">
+                                <span class="module-year">2023-25</span>
+                                <span>A-Levels: A* Mathematics, A History, B Further Mathematics, B English Literature</span>
+                            </div>
+                            <div class="module-row">
+                                <span class="module-year">2018-23</span>
+                                <span>GCSEs: six Grade 9s, including Mathematics, Chemistry, English Literature</span>
+                            </div>
+                        </div>
+                        
+                        <div class="inner-card" style="margin-top: 1.5rem;">
+                            <h3>📚 MODULES</h3>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-weight: 600; color:#2A6B7C; margin-bottom: 0.5rem;">Semester A</div>
+                                <div class="module-row">
+                                    <span class="module-year">MTH4300</span>
+                                    <span>Introduction to Analysis with Calculus</span>
+                                </div>
+                                <div class="module-row">
+                                    <span class="module-year">MTH4500</span>
+                                    <span>Probability and Statistics</span>
+                                </div>
+                                <div class="module-row">
+                                    <span class="module-year">MTH4213</span>
+                                    <span>Numbers, Sets and Functions</span>
+                                </div>
+                                <div class="module-row">
+                                    <span class="module-year">MTH4000</span>
+                                    <span>Programming in Python I</span>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-weight: 600; color:#2A6B7C; margin-bottom: 0.5rem;">Semester B (Current)</div>
+                                <div class="module-row">
+                                    <span class="module-year">MTH4300</span>
+                                    <span>Introduction to Analysis with Calculus</span>
+                                </div>
+                                <div class="module-row">
+                                    <span class="module-year">MTH4500</span>
+                                    <span>Probability and Statistics</span>
+                                </div>
+                                <div class="module-row">
+                                    <span class="module-year">MTH4104</span>
+                                    <span>Introduction to Algebra</span>
+                                </div>
+                                <div class="module-row">
+                                    <span class="module-year">MTH4215</span>
+                                    <span>Vectors and Matrices</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="font-weight: 600; color:#2A6B7C; margin-bottom: 0.5rem;">Year 2</div>
+                                <div class="module-row">
+                                    <span class="module-year"></span>
+                                    <span><span class="badge-construction">in construction</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="inner-card">
+                            <h3>📈 SKILLS</h3>
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">R</span>
+                                <span class="skill-tag">Excel</span>
+                                <span class="skill-tag">Google Colab</span>
+                                <span class="skill-tag">Data Analysis</span>
+                                <span class="skill-tag">Statistical Methods</span>
+                            </div>
+                            <img src="https://www.dropbox.com/scl/fi/98knlx1n3xcs2zy9hoirb/IMG_5634.jpeg?rlkey=z0hikwrd9in8yg8ek2js9k0u7&st=y3w76vt3&raw=1" class="photo-full" alt="Hannah working">
+                        </div>
+                        
+                        <div class="inner-card" style="margin-top: 1.5rem;">
+                            <h3>🔮 UPCOMING SKILLS</h3>
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                                <span class="upcoming-skill-tag">HTML</span>
+                                <span class="upcoming-skill-tag">CSS</span>
+                                <span class="upcoming-skill-tag">JavaScript</span>
+                                <span class="upcoming-skill-tag">Machine Learning</span>
+                                <span class="upcoming-skill-tag">Git</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Experience Section -->
+        <section id="experience" class="card">
+            <div class="card-content">
+                <h2><span class="section-number">03</span> EXPERIENCE & ACHIEVEMENTS</h2>
+                
+                <div class="grid-experience">
+                    <div>
+                        <div class="inner-card">
+                            <h3>EMPLOYMENT</h3>
+                            <div class="module-row">
+                                <span class="module-year">2023 - present</span>
+                                <span><strong>Private Maths Tutor</strong> · Self-employed</span>
+                            </div>
+                            <div style="padding-left: 100px; margin-bottom: 1rem; font-size:0.95rem;">
+                                GCSE Mathematics. Worked with students across Year 8 to Year 11, seeing a student from a U to a Grade 5.
+                            </div>
+                            <div class="module-row">
+                                <span class="module-year">July 2025 - present</span>
+                                <span><strong>Store Assistant</strong> · IKEA, Harlow</span>
+                            </div>
+                            <div style="padding-left: 100px; margin-bottom: 1rem; font-size:0.95rem;">
+                                Supporting operations in fast-paced environments, and working in customer service to directly address queries.
+                            </div>
+                        </div>
+                        
+                        <div class="inner-card" style="margin-top: 1.5rem;">
+                            <h3>📋 SHORT COURSES</h3>
+                            <div class="module-row">
+                                <span class="module-year">2023</span>
+                                <span>University College London · Young Investment Banker</span>
+                            </div>
+                            <div class="module-row no-border">
+                                <span class="module-year">2024</span>
+                                <span>Imperial College London · Further mA*ths Online</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="inner-card">
+                            <h3>🏆 ACHIEVEMENTS</h3>
+                            
+                            <div class="achievement-with-photo">
+                                <div>
+                                    <div style="font-weight: 600;">Best Overall Presentation</div>
+                                    <div class="achievement-date">March 2026 · QMUL Hackathon</div>
+                                    <div style="margin-top: 0.25rem; font-size: 0.95rem; margin-bottom: 0.5rem;">For the AI Bias Auditor project.</div>
+                                </div>
+                                <img src="https://www.dropbox.com/scl/fi/yghpuo808r40ndqhysyn5/Image-13-03-2026-at-20.05.png?rlkey=uszaim6zfeh4r5fl03o0g7s74&st=x1ndibrh&raw=1" class="photo-certificate" alt="Certificate">
+                            </div>
+                            
+                            <div style="margin-top: 2rem;">
+                                <div style="font-weight: 600;">Exceptional Academic Achievement</div>
+                                <div class="achievement-date">November 2023 · Harlow Education Awards</div>
+                                <div style="margin-top: 0.5rem; font-size: 0.95rem;">Awarded for consistent high performance, disciplined study and strong ability across multiple subjects.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Section with Logo Card -->
+        <section id="contact" class="card">
+            <div class="card-content">
+                <h2><span class="section-number">04</span> CONTACT</h2>
+                
+                <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+                    <!-- Left side: Contact cards + status banners -->
+                    <div style="flex: 1.5; min-width: 300px;">
+                        <!-- Contact cards -->
+                        <div class="contact-grid" style="width: 100%; margin-bottom: 1.5rem;">
+                            <div class="contact-card">
+                                <div class="contact-icon">📧</div>
+                                <div class="contact-title">Email</div>
+                                <div class="contact-detail">hannahhamid631@gmail.com</div>
+                            </div>
+                            
+                            <div class="contact-card">
+                                <div class="contact-icon">🔗</div>
+                                <div class="contact-title">LinkedIn</div>
+                                <div class="contact-detail"><a href="https://www.linkedin.com/in/hannahhamid/" target="_blank">linkedin.com/in/hannahhamid</a></div>
+                            </div>
+                            
+                            <div class="contact-card">
+                                <div class="contact-icon">🐙</div>
+                                <div class="contact-title">GitHub</div>
+                                <div class="contact-detail"><a href="https://github.com/h4nnah-byte" target="_blank">github.com/h4nnah-byte</a></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Status banners stacked on left -->
+                        <div class="status-banner green">
+                            Open for internships and work experience now
+                        </div>
+                        
+                        <div class="status-banner orange">
+                            Open for placements 2027-2028
+                        </div>
+                    </div>
+                    
+                    <!-- Right side: Your logo card -->
+                    <div style="flex: 1; min-width: 300px; display: flex; justify-content: center; align-items: center;">
+                        <div class="bottom-logo-card">
+                            <div class="bottom-logo-content">
+                                <div class="bottom-logo">
+                                    <span class="bottom-h">H²</span>
+                                    <span class="bottom-name">HANNAH HAMID</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <div class="footer-note">
+            🌱 Last updated: March 2026 · Designed and directed by Hannah, built with AI assistance
+        </div>
+    </div>
+    
+    <script>
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        function updateActiveLink() {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', updateActiveLink);
+        window.addEventListener('load', updateActiveLink);
+    </script>
+</body>
+</html>
