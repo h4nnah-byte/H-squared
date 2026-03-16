@@ -1080,26 +1080,33 @@
             </div>
             
             <div>
-                <!-- RECENTLY LISTENING (first, standard styling) -->
-                <div class="inner-card" style="margin-bottom: 1.5rem;">
-                    <h3>🎧 RECENTLY LISTENING</h3>
-                    <div style="margin-bottom: 0.75rem;">
-                        <a href="https://dataskeptic.com/podcast" target="_blank" style="color: #2A6B7C; text-decoration: none; font-weight: 500;">📻 Data Skeptic Podcast</a>
-                    </div>
-                    <ul style="list-style: none;">
-                        <li style="margin-bottom: 0.5rem;">
-                            <a href="https://open.spotify.com/episode/4ONatSHw5XzYSMtXSMGWlu" target="_blank" style="color: #1A2A3A; text-decoration: none; display: flex; align-items: center; gap: 0.3rem;">
-                                <span>🎙️</span> Detecting Cheating in Chess
-                            </a>
-                        </li>
-                        <li style="margin-bottom: 0.5rem;">
-                            <a href="https://open.spotify.com/episode/5tmFTOmrJ2OxXgBn3MZEGu?si=bc3531cbcfef4711" target="_blank" style="color: #1A2A3A; text-decoration: none; display: flex; align-items: center; gap: 0.3rem;">
-                                <span>🎙️</span> Shakespeare, Abiogenesis, and Exoplanets
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                
+<!-- RECENTLY LISTENING - Interactive Swiper -->
+<div class="inner-card" style="margin-bottom: 1.5rem;">
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+        <h3 style="margin: 0;">🎧 RECENTLY LISTENING</h3>
+        <a href="https://dataskeptic.com/podcast" target="_blank" style="color: #2A6B7C; text-decoration: none; font-size: 0.8rem;">📻 Data Skeptic</a>
+    </div>
+    
+    <div style="position: relative; margin: 1rem 0;">
+        <!-- Episode card -->
+        <div style="background: rgba(42, 107, 124, 0.05); border-radius: 12px; padding: 1.2rem; border: 1px solid rgba(42, 107, 124, 0.2); position: relative;" id="episodeCard">
+            <!-- Yellow badge -->
+            <div id="currentBadge" style="position: absolute; top: -8px; left: 15px; background: rgba(255, 215, 0, 0.15); color: #8B6B2A; padding: 0.15rem 0.7rem; border-radius: 20px; font-size: 0.65rem; font-weight: 700; border: 1px solid rgba(255, 215, 0, 0.3); display: flex; align-items: center; text-transform: uppercase; letter-spacing: 0.5px;">✨ CURRENTLY LISTENING</div>
+            
+            <div style="font-weight: 600; font-size: 0.95rem; margin: 0.75rem 0 0.25rem 0;">
+                <a href="#" id="episodeLink" target="_blank" style="color: #0A192F; text-decoration: none;">Detecting Cheating in Chess</a>
+            </div>
+            <div style="font-size: 0.7rem; color: #6c757d;" id="episodeDate">May 2015 · 44 min</div>
+        </div>
+    </div>
+    
+    <!-- Swiper controls -->
+    <div style="display: flex; align-items: center; justify-content: center; gap: 1.5rem; margin: 1rem 0 0.25rem;">
+        <div onclick="prevEpisode()" style="background: rgba(42, 107, 124, 0.1); border: 1px solid rgba(42, 107, 124, 0.2); color: #2A6B7C; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; cursor: pointer; transition: all 0.2s;">←</div>
+        <span style="font-size: 0.8rem; color: #6c757d;" id="episodeCounter">1/4</span>
+        <div onclick="nextEpisode()" style="background: rgba(42, 107, 124, 0.1); border: 1px solid rgba(42, 107, 124, 0.2); color: #2A6B7C; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; cursor: pointer; transition: all 0.2s;">→</div>
+    </div>
+</div> 
                 <!-- Currently Learning (second) -->
                 <div class="inner-card" style="margin-bottom: 1.5rem;">
                     <h3>🧠 CURRENTLY LEARNING</h3>
@@ -1208,8 +1215,9 @@
                 </div>
             </div>
             
-            <!-- Right: Skills Title + Photo -->
+            <!-- Right: Skills + Data Generator + Upcoming Skills -->
             <div>
+                <!-- SKILLS box -->
                 <div class="inner-card">
                     <h3>📊 SKILLS</h3>
                     
@@ -1217,15 +1225,32 @@
                     <div style="margin: 1.5rem 0;">
                         <img src="https://www.dropbox.com/scl/fi/j9rardau0nsyuh1lg8j1e/Image-16-03-2026-at-08.13.png?rlkey=rbgu0cp1e1pfzemtzhgsoxzv6&st=wkst1hra&raw=1" alt="Skills visualization" style="width: 100%; border-radius: 16px; border: 2px solid rgba(42, 107, 124, 0.3);">
                     </div>
+                </div>
+                
+                <!-- DATA POINT GENERATOR box (NEW) -->
+                <div class="inner-card" style="margin-top: 1.5rem;">
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                        <span style="font-size: 1.5rem;">📊</span>
+                        <h3 style="margin: 0;">DATA POINT GENERATOR</h3>
+                    </div>
+                    <div style="color: #6c757d; font-size: 0.9rem; margin-bottom: 1rem; border-left: 3px solid #2A6B7C; padding-left: 1rem;">
+                        Click below to discover random facts about me
+                    </div>
                     
-                    <!-- Upcoming Skills (kept below photo) -->
-                    <div style="margin-top: 1.5rem;">
-                        <h3 style="margin-bottom: 1rem;">🔮 UPCOMING SKILLS</h3>
-                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-                            <span class="upcoming-skill-tag">JavaScript</span>
-                            <span class="upcoming-skill-tag">Machine Learning</span>
-                            <span class="upcoming-skill-tag">SQL</span>
-                        </div>
+                    <div style="background: rgba(42, 107, 124, 0.05); border-radius: 18px; padding: 1.5rem; border: 1px solid rgba(42, 107, 124, 0.2); margin: 1rem 0; min-height: 100px; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; color: #0A192F; text-align: center; line-height: 1.5;" id="dataPoint">
+                        🏆 My team won 'Best Overall Presentation' at the QMUL Hackathon.
+                    </div>
+                    
+                    <button onclick="generateDataPoint()" style="background: rgba(255, 215, 0, 0.2); color: #8B6B2A; padding: 0.8rem 2rem; border-radius: 50px; font-size: 1rem; font-weight: 600; border: 2px solid rgba(255, 215, 0, 0.4); cursor: pointer; width: 100%; letter-spacing: 0.5px; text-transform: uppercase;">⚡ GENERATE NEW FACT</button>
+                </div>
+                
+                <!-- UPCOMING SKILLS box -->
+                <div class="inner-card" style="margin-top: 1.5rem;">
+                    <h3>🔮 UPCOMING SKILLS</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                        <span class="upcoming-skill-tag">JavaScript</span>
+                        <span class="upcoming-skill-tag">Machine Learning</span>
+                        <span class="upcoming-skill-tag">SQL</span>
                     </div>
                 </div>
             </div>
@@ -1318,9 +1343,41 @@
                 </div>
             </div>
             
-            <!-- Right side: Your logo card -->
-            <div style="flex: 1; min-width: 300px; display: flex; justify-content: center; align-items: center;">
-                <div class="bottom-logo-card">
+            <!-- Right side: Coffee Power Meter + Logo Card -->
+            <div style="flex: 2; min-width: 300px; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+                <!-- COFFEE POWER METER -->
+                <div style="background: white; border-radius: 26px; padding: 1.5rem; max-width: 300px; width: 100%; box-shadow: 0 8px 32px rgba(0,0,0,0.15); border: 1px solid rgba(255,255,255,0.4);">
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+                        <span style="font-size: 2rem;">☕</span>
+                        <h3 style="color: #2A6B7C; margin: 0; font-size: 1.2rem;">COFFEE POWER METER</h3>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <span style="color: #0A192F; font-weight: 500;">Vibe coding energy</span>
+                        <span id="coffeePercent" style="font-weight: 600;">0%</span>
+                    </div>
+                    <div style="background: rgba(42, 107, 124, 0.1); height: 20px; border-radius: 30px; overflow: hidden; margin-bottom: 1rem; border: 1px solid rgba(42, 107, 124, 0.2);">
+                        <div id="coffeeMeter" style="background: #8B6B2A; height: 100%; width: 0%; border-radius: 30px; transition: width 0.3s ease;"></div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; margin: 1rem 0;">
+                        <button id="addCoffeeBtn" onclick="addCoffee()" style="background: rgba(255, 215, 0, 0.2); color: #8B6B2A; padding: 0.8rem 1.5rem; border-radius: 40px; font-size: 0.9rem; font-weight: 600; border: 2px solid rgba(255, 215, 0, 0.4); cursor: pointer; width: 140px;">➕ ADD COFFEE</button>
+                        <button id="writeCodeBtn" onclick="writeCode()" style="background: rgba(255, 215, 0, 0.2); color: #8B6B2A; padding: 0.8rem 1.5rem; border-radius: 40px; font-size: 0.9rem; font-weight: 600; border: 2px solid rgba(255, 215, 0, 0.4); cursor: pointer; width: 140px;" disabled>💻 WRITE CODE</button>
+                    </div>
+                    
+                    <div style="background: rgba(42, 107, 124, 0.05); padding: 1rem; border-radius: 16px; font-size: 0.8rem;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
+                            <span>☕ Coffee: <span id="coffeeCount">0</span></span>
+                            <span>📝 Lines: <span id="codeCount">0</span></span>
+                        </div>
+                        <div id="message" style="font-family: 'JetBrains Mono'; font-size: 0.75rem; color: #1a5b6c; margin-top: 0.5rem; text-align: center;">> Click coffee to start ⚡</div>
+                    </div>
+                    
+                    <div id="phaseIndicator" style="font-size: 0.65rem; color: #8a9aa8; margin-top: 0.5rem; text-align: center; font-style: italic;">☕ Coffee phase: Build energy to 100%</div>
+                </div>
+                
+                <!-- Logo Card -->
+                <div class="bottom-logo-card" style="max-width: 250px;">
                     <div class="bottom-logo-content">
                         <div class="bottom-logo">
                             <span class="bottom-h">H²</span>
