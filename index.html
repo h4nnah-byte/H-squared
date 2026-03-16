@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>H² · Hannah Hamid</title>
+    <title>Hannah Hamid · Data in Progress</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -545,11 +545,27 @@
             padding: 1.5rem;
             border: 1px solid rgba(42, 107, 124, 0.3);
             margin: 1.5rem 0;
+            position: relative;
+        }
+        
+        .current-badge {
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: #2A6B7C;
+            color: white;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
         
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 1.5rem;
             margin-bottom: 1.5rem;
         }
@@ -669,7 +685,7 @@
             border-bottom: none;
         }
         
-        /* Bottom logo card - H² above, name on single line */
+        /* Bottom logo card */
         .bottom-logo-card {
             background: transparent;
             border-radius: 28px;
@@ -721,6 +737,36 @@
             text-align: center;
             line-height: 1.2;
             white-space: nowrap;
+        }
+        
+        /* Top right status banners */
+        .top-status-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.5rem;
+        }
+        
+        .top-status-banner {
+            border-radius: 100px;
+            padding: 0.4rem 1.2rem;
+            text-align: center;
+            font-weight: 500;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            width: fit-content;
+        }
+        
+        .top-status-banner.green {
+            background: rgba(64, 145, 108, 0.15);
+            border: 1px solid rgba(64, 145, 108, 0.3);
+            color: #2d6a4f;
+        }
+        
+        .top-status-banner.orange {
+            background: rgba(244, 162, 97, 0.15);
+            border: 1px solid rgba(244, 162, 97, 0.3);
+            color: #bc6c25;
         }
         
         /* Responsive Design */
@@ -798,6 +844,11 @@
                 margin-top: 1.5rem;
                 max-width: 100%;
             }
+            
+            .top-status-container {
+                align-items: flex-start;
+                margin-top: 1rem;
+            }
         }
         
         @media (max-width: 500px) {
@@ -851,20 +902,6 @@
                 font-size: 0.85rem;
             }
         }
-        
-        @media (max-width: 350px) {
-            .kpi-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .bottom-name {
-                font-size: 1.5rem;
-            }
-            
-            .bottom-h {
-                font-size: 2.2rem;
-            }
-        }
     </style>
 </head>
 <body>
@@ -897,366 +934,362 @@
                 <a href="#contact" class="nav-link">Contact</a>
             </div>
         </div>
-<!-- ===== HOME SECTION ===== -->
-<section id="home" class="card">
-    <div class="card-content">
-        <!-- Hero with photo and intro (unchanged) -->
-        <div style="display: flex; align-items: flex-start; gap: 2rem; flex-wrap: wrap;">
-            <div style="flex: 1; min-width: 300px;">
-                <div class="name-with-h">
-                    <span class="h-squared">H²</span>
-                    <h1>HANNAH HAMID</h1>
+        
+        <!-- Home Section -->
+        <section id="home" class="card">
+            <div class="card-content">
+                <div style="display: flex; align-items: flex-start; gap: 2rem; flex-wrap: wrap;">
+                    <div style="flex: 2; min-width: 300px;">
+                        <div class="name-with-h">
+                            <span class="h-squared">H²</span>
+                            <h1>HANNAH HAMID</h1>
+                        </div>
+                        
+                        <div style="font-size: 1.1rem; color: #2A6B7C; margin: 1rem 0;">
+                            Mathematics & Statistics BSc · QMUL · 2025-2029
+                        </div>
+                        <div style="margin: 1.5rem 0;" class="clearfix">
+                            <img src="https://www.dropbox.com/scl/fi/zz36l7bkn2xhjpldntzom/IMG_4435.jpeg?rlkey=2hhg85azy2m7bn21pd9crzye0&st=kdkc164a&raw=1" class="photo-circle float-left" style="margin-right: 1.5rem; object-fit: cover;" alt="Hannah Hamid profile">
+                            <div>
+                                <p style="margin-bottom: 1rem;">Hi, I'm Hannah, and data is my medium. I'm a first-year <span class="highlight-bold">Mathematics and Statistics</span> student, spending my days studying statistical methods and my nights teaching myself <span class="highlight-bold">Python</span>, <span class="highlight-bold">R</span>, and the art of <span class="highlight-bold">vibe coding</span>.</p>
+                                
+                                <p style="margin-bottom: 1rem;">Recently, I have been exploring how to use AI responsibly to uncover insights that help people make better decisions. Data science, to me, is about finding the story hidden between the numbers.</p>
+                                
+                                <p style="margin-bottom: 1rem;">Away from the code, I have a love for teaching GCSE Mathematics, which I have been doing since I finished the exams myself. Recently, I worked hard with a student to increase their grade from a Grade 2 to a 5 in Foundation. Teaching has taught me that when someone starts enjoying the process, the progress follows naturally.</p>
+                                
+                                <p><strong>Take a look around - consider this my way of teaching you what I've been learning.</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Status banners moved to top right -->
+                    <div class="top-status-container" style="flex: 1; min-width: 200px;">
+                        <div class="top-status-banner green">
+                            ⚡ Open for internships & experience
+                        </div>
+                        <div class="top-status-banner orange">
+                            ⚡ Open for placements 2027-2028
+                        </div>
+                    </div>
                 </div>
                 
-                <div style="font-size: 1.1rem; color: #2A6B7C; margin: 1rem 0;">
-                    Mathematics & Statistics BSc · QMUL · 2025-2029
+                <div class="code-cell">
+                    <div class="code-prompt">
+                        <span>>>> </span> print("This website was")
+                    </div>
+                    <div class="code-prompt">
+                        <span>... </span> print("vibe coded entirely by me!")
+                    </div>
+                    <div class="code-output">
+                        This website was<br>
+                        vibe coded entirely by me!
+                    </div>
+                    <div style="margin-top: 0.75rem; font-size: 0.8rem; color: #4A5A6A;">
+                        #designed and directed by me
+                    </div>
                 </div>
-                <div style="margin: 1.5rem 0;" class="clearfix">
-                    <img src="https://www.dropbox.com/scl/fi/vdviyft00hg4xirmjkp50/Image.jpeg?rlkey=uskhaok7l4yx99yosw663k2w8&st=lc0frlvk&raw=1" class="photo-circle float-left" style="margin-right: 1.5rem; object-fit: cover;" alt="Hannah Hamid profile">
-                    <div>
-                        <p style="margin-bottom: 1rem;">Hi, I'm Hannah, and data is my medium. I'm a first-year <span class="highlight-bold">Mathematics and Statistics</span> student, spending my days studying statistical methods and my nights teaching myself <span class="highlight-bold">Python</span>, <span class="highlight-bold">R</span>, and the art of <span class="highlight-bold">vibe coding</span>.</p>
-                        
-                        <p style="margin-bottom: 1rem;">Recently, I have been exploring how to use AI responsibly to uncover insights that help people make better decisions. Data science, to me, is about finding the story hidden between the numbers.</p>
-                        
-                        <p style="margin-bottom: 1rem;">Away from the code, I have a love for teaching GCSE Mathematics, which I have been doing since I finished the exams myself. Recently, I worked hard with a student to increase their grade from a Grade 2 to a 5 in Foundation. Teaching has taught me that when someone starts enjoying the process, the progress follows naturally.</p>
-                        
-                        <p><strong>Take a look around - consider this my way of teaching you what I've been learning.</strong></p>
+                
+                <h3 style="margin: 2rem 0 1rem;">⌨️ CURRENT SNAPSHOT</h3>
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-value">91%</div>
+                        <div class="kpi-label">in Probability & Statistics</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-value">A*</div>
+                        <div class="kpi-label">in A-Level Mathematics</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-value">2</div>
+                        <div class="kpi-label">ACTIVE PROJECTS</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-value">'27-28</div>
+                        <div class="kpi-label">PLACEMENT YEAR</div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
         
-        <!-- Status banners - repositioned closer to intro, less gap -->
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 0.75rem; margin: 0.5rem 0 1rem 0;">
-            <div class="status-banner green" style="width: fit-content; margin: 0 auto;">
-                CURRENTLY⚡ Open for internships and work experience
-            </div>
-            <div class="status-banner orange" style="width: fit-content; margin: 0 auto;">
-                2027-2028⚡Open for placements
-            </div>
-        </div>
-        
-        <!-- Code cell PS note (closer to banners) -->
-        <div class="code-cell">
-            <div class="code-prompt">
-                <span>>>> </span> print("This website was")
-            </div>
-            <div class="code-prompt">
-                <span>... </span> print("vibe coded entirely by me!")
-            </div>
-            <div class="code-output">
-                This website was<br>
-                vibe coded entirely by me!
-            </div>
-            <div style="margin-top: 0.75rem; font-size: 0.8rem; color: #4A5A6A;">
-                #designed and directed by me
-            </div>
-        </div>
-        
-        <!-- KPI Dashboard (unchanged) -->
-        <h3 style="margin: 2rem 0 1rem;">⌨️ CURRENT SNAPSHOT</h3>
-        <div class="kpi-grid">
-            <div class="kpi-card">
-                <div class="kpi-value">91%</div>
-                <div class="kpi-label">in Probability & Statistics</div>
-            </div>
-            <div class="kpi-card">
-                <div class="kpi-value">A*</div>
-                <div class="kpi-label">in A-Level Mathematics</div>
-            </div>
-            <div class="kpi-card">
-                <div class="kpi-value">2</div>
-                <div class="kpi-label">ACTIVE PROJECTS</div>
-            </div>
-            <div class="kpi-card">
-                <div class="kpi-value">'27-28</div>
-                <div class="kpi-label">PLACEMENT YEAR</div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- ===== PROJECTS SECTION ===== -->
-<section id="projects" class="card">
-    <div class="card-content">
-        <h2><span class="section-number">01</span> PROJECTS</h2>
-        
-        <!-- ===== CURRENT PROJECT - Confidence Intervals Essay with title first, tabs below ===== -->
-        <div class="project-highlight">
-            <!-- Title and date row (FIRST) -->
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap;">
-                <h3 style="margin-bottom: 0;">📝 CONFIDENCE INTERVALS AND HYPOTHESIS TESTING</h3>
-                <span class="date-badge">March 2026</span>
-            </div>
-            
-            <!-- Tabs row - side by side (SECOND, below title) -->
-            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
-                <!-- Yellow CURRENT PROJECT tab -->
-                <span style="background: rgba(255, 215, 0, 0.15); color: #8B6B2A; padding: 0.2rem 0.8rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700; border: 1px solid rgba(255, 215, 0, 0.3); display: inline-flex; align-items: center; text-transform: uppercase; letter-spacing: 0.5px;">CURRENT PROJECT</span>
+        <!-- ===== PROJECTS SECTION ===== -->
+        <section id="projects" class="card">
+            <div class="card-content">
+                <h2><span class="section-number">01</span> PROJECTS</h2>
                 
-                <!-- Research essay badge -->
-                <span style="background: rgba(156, 39, 176, 0.1); color: #6a1b9a; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.7rem; font-weight: 600; border: 1px solid rgba(156, 39, 176, 0.3); display: inline-flex; align-items: center; gap: 0.2rem;">📄 Research Essay</span>
-            </div>
-            
-            <!-- Content -->
-            <div style="margin-bottom: 1rem;">
-                <p style="margin-bottom: 0.75rem;">As part of my university coursework, I was asked to research and provide an essay about confidence intervals and hypothesis testing. I found that they are fundamental to the framework of statistical reasoning, and helpful in making decisions in the presence of risk and uncertainty.</p>
-                
-                <p style="margin-bottom: 0.75rem;">Also, understanding the potential errors in these calculations is essential for the correct interpretation of such results.</p>
-                
-                <!-- Graph image -->
-                <div style="margin: 1.5rem 0;">
-                    <img src="https://www.dropbox.com/scl/fi/iqflcbpulzs84e613vnj0/Graph.png?rlkey=1wbofjxp3quw1gu5wsj5auckv&st=hz5emibx&raw=1" alt="Graph showing confidence intervals for chocolate bar weights" style="max-width: 100%; border-radius: 12px; border: 2px solid rgba(42, 107, 124, 0.3);">
-                    <p style="font-size: 0.8rem; color: #6c757d; margin-top: 0.5rem; text-align: center;">Figure 1: Confidence interval (blue), null hypothesised value (red)</p>
-                </div>
-            </div>
-            
-            <!-- Tags -->
-            <div style="margin-bottom: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem;">
-                <span class="skill-tag">R</span>
-                <span class="skill-tag">Statistics</span>
-                <span class="skill-tag">Hypothesis Testing</span>
-                <span class="skill-tag">Academic Writing</span>
-            </div>
-            
-            <!-- Link to full essay -->
-            <a href="#" target="_blank" class="button-link" style="margin-top: 0.5rem;">🔗 Read the full essay →</a>
-        </div>
-        
-        <div class="grid-sidebar">
-            <div>
-                <!-- AI Bias Auditor (with updated skills) -->
-                <div class="inner-card" style="margin-bottom: 1.5rem;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-                        <h3 style="margin-bottom: 0;">🤖 AI BIAS AUDITOR</h3>
+                <!-- ===== CURRENT PROJECT - Confidence Intervals Essay with side-by-side tabs ===== -->
+                <div class="project-highlight">
+                    <!-- Tabs row - side by side -->
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap;">
+                        <!-- Yellow CURRENT PROJECT tab -->
+                        <span style="background: rgba(255, 215, 0, 0.15); color: #8B6B2A; padding: 0.2rem 0.8rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700; border: 1px solid rgba(255, 215, 0, 0.3); display: inline-flex; align-items: center; text-transform: uppercase; letter-spacing: 0.5px;">CURRENT PROJECT</span>
+                        
+                        <!-- Research essay badge -->
+                        <span style="background: rgba(156, 39, 176, 0.1); color: #6a1b9a; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.7rem; font-weight: 600; border: 1px solid rgba(156, 39, 176, 0.3); display: inline-flex; align-items: center; gap: 0.2rem;">📄 Research Essay</span>
+                    </div>
+                    
+                    <!-- Title and date row -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap;">
+                        <h3 style="margin-bottom: 0;">📝 CONFIDENCE INTERVALS AND HYPOTHESIS TESTING</h3>
                         <span class="date-badge">March 2026</span>
                     </div>
-                    <div style="margin-bottom: 1rem;">
-                        <span class="badge" style="background: rgba(255, 215, 0, 0.15); color: #8B6B2A; border-color: rgba(255, 215, 0, 0.3);">🏆 Best Overall Presentation · QMUL Hackathon</span>
-                    </div>
-                    <div style="margin-bottom: 1rem;">
-                        <p>I had originally joined the hackathon for the experience, but it seems our team managed to leave with so much more! We had the opportunity to learn vibe coding, the importance of well-trained AI, and how to analyse data using such.</p>
-                        <p style="margin-top: 0.75rem;">The chosen topic had my team quantifying AI bias to show the significant risks of using AI in companies without the proper training of both the AI and us humans.</p>
-                        <p style="margin-top: 0.75rem;">I also vibe-coded my very first website in just under 12 hours. It may be full of bugs, but that just adds character!</p>
-                    </div>
-                    <!-- Updated skills: removed 'ethics', added new ones -->
-                    <div style="margin-bottom: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem;">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">Data Analysis</span>
-                        <span class="skill-tag">Git</span>
-                        <span class="skill-tag">Generative AI</span>
-                        <span class="skill-tag">HTML</span>
-                        <span class="skill-tag">CSS</span>
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">Vibe Coding</span>
-                    </div>
-                    <a href="https://www.linkedin.com/in/hannahhamid/" target="_blank" class="button-link">🔗 See my LinkedIn post about it →</a>
                     
-                    <img src="https://www.dropbox.com/scl/fi/8zf0r6onwjxtqsg8xjay6/577e37fd-15cd-407a-a2a6-546d4e0b4b5f.jpeg?rlkey=nue95ecdsgh595hhbqpfgfhb1&st=sqrkkc1b&raw=1" class="photo-sixteen-nine" alt="Hackathon project photo">
-                </div>
-                
-                <!-- This Website (updated with purple badge and new description) -->
-                <div class="inner-card" style="margin-bottom: 1.5rem;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-                        <h3 style="margin-bottom: 0;">🌐 THIS WEBSITE</h3>
-                        <span class="date-badge">in progress · March 2026</span>
-                    </div>
-                    <!-- Purple badge with emoji, matching Research Essay -->
+                    <!-- Content -->
                     <div style="margin-bottom: 1rem;">
-                        <span style="background: rgba(156, 39, 176, 0.1); color: #6a1b9a; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.7rem; font-weight: 600; border: 1px solid rgba(156, 39, 176, 0.3); display: inline-flex; align-items: center; gap: 0.2rem;">✨ Vibe Coded</span>
+                        <p style="margin-bottom: 0.75rem;">As part of my university coursework, I was asked to research and provide an essay about confidence intervals and hypothesis testing. I found that they are fundamental to the framework of statistical reasoning, and helpful in making decisions in the presence of risk and uncertainty.</p>
+                        
+                        <p style="margin-bottom: 0.75rem;">Also, understanding the potential errors in these calculations is essential for the correct interpretation of such results.</p>
+                        
+                        <!-- Graph image -->
+                        <div style="margin: 1.5rem 0;">
+                            <img src="https://www.dropbox.com/scl/fi/iqflcbpulzs84e613vnj0/Graph.png?rlkey=1wbofjxp3quw1gu5wsj5auckv&st=hz5emibx&raw=1" alt="Graph showing confidence intervals for chocolate bar weights" style="max-width: 100%; border-radius: 12px; border: 2px solid rgba(42, 107, 124, 0.3);">
+                            <p style="font-size: 0.8rem; color: #6c757d; margin-top: 0.5rem; text-align: center;">Figure 1: Confidence interval (blue), null hypothesised value (red)</p>
+                        </div>
                     </div>
-                    <!-- Updated description -->
-                    <div style="margin-bottom: 1rem;">
-                        <p>I built this website as a personal portfolio, but mainly as a way for me to experiment with vibe coding!</p>
-                        <p style="margin-top: 0.75rem;">I had the opportunity to learn pieces of HTML, CSS, and JavaScript. But, most importantly, I've learned how to efficiently vibe code (and had fun doing it!)</p>
-                    </div>
-                    <!-- Updated skills with 'Vibe Coding' -->
+                    
+                    <!-- Tags -->
                     <div style="margin-bottom: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem;">
-                        <span class="skill-tag">HTML</span>
-                        <span class="skill-tag">CSS</span>
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">Vibe Coding</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div>
-<!-- RECENTLY LISTENING - Interactive Swiper -->
-<div class="inner-card" style="margin-bottom: 1.5rem;">
-    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
-        <h3 style="margin: 0;">🎧 RECENTLY LISTENING</h3>
-        <a href="https://dataskeptic.com/podcast" target="_blank" style="color: #2A6B7C; text-decoration: none; font-size: 0.8rem;">📻 Data Skeptic</a>
-    </div>
-    
-    <div style="position: relative; margin: 1rem 0;">
-        <!-- Episode card -->
-        <div style="background: rgba(42, 107, 124, 0.05); border-radius: 12px; padding: 1.2rem; border: 1px solid rgba(42, 107, 124, 0.2); position: relative;" id="episodeCard">
-            <!-- Yellow badge -->
-            <div id="currentBadge" style="position: absolute; top: -8px; left: 15px; background: rgba(255, 215, 0, 0.15); color: #8B6B2A; padding: 0.15rem 0.7rem; border-radius: 20px; font-size: 0.65rem; font-weight: 700; border: 1px solid rgba(255, 215, 0, 0.3); display: flex; align-items: center; text-transform: uppercase; letter-spacing: 0.5px;">✨ CURRENTLY LISTENING</div>
-            
-            <div style="font-weight: 600; font-size: 0.95rem; margin: 0.75rem 0 0.25rem 0;">
-                <a href="#" id="episodeLink" target="_blank" style="color: #0A192F; text-decoration: none;">Detecting Cheating in Chess</a>
-            </div>
-            <div style="font-size: 0.7rem; color: #6c757d;" id="episodeDate">May 2015 · 44 min</div>
-        </div>
-    </div>
-    
-    <!-- Swiper controls -->
-    <div style="display: flex; align-items: center; justify-content: center; gap: 1.5rem; margin: 1rem 0 0.25rem;">
-        <div onclick="prevEpisode()" style="background: rgba(42, 107, 124, 0.1); border: 1px solid rgba(42, 107, 124, 0.2); color: #2A6B7C; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; cursor: pointer; transition: all 0.2s;">←</div>
-        <span style="font-size: 0.8rem; color: #6c757d;" id="episodeCounter">1/4</span>
-        <div onclick="nextEpisode()" style="background: rgba(42, 107, 124, 0.1); border: 1px solid rgba(42, 107, 124, 0.2); color: #2A6B7C; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; cursor: pointer; transition: all 0.2s;">→</div>
-    </div>
-</div> 
-                <!-- Currently Learning (second) -->
-                <div class="inner-card" style="margin-bottom: 1.5rem;">
-                    <h3>🧠 CURRENTLY LEARNING</h3>
-                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
                         <span class="skill-tag">R</span>
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">HTML</span>
-                        <span class="skill-tag">CSS</span>
-                        <span class="skill-tag">Google Colab</span>
-                        <span class="skill-tag">Git/GitHub</span>
+                        <span class="skill-tag">Statistics</span>
+                        <span class="skill-tag">Hypothesis Testing</span>
+                        <span class="skill-tag">Academic Writing</span>
                     </div>
+                    
+                    <!-- Link to full essay -->
+                    <a href="#" target="_blank" class="button-link" style="margin-top: 0.5rem;">🔗 Read the full essay →</a>
                 </div>
                 
-                <!-- Currently Reading -->
-                <div class="inner-card" style="margin-bottom: 1.5rem;">
-                    <h3>📚 CURRENTLY READING</h3>
-                    <ul style="list-style: none;">
-                        <li style="margin-bottom: 0.75rem;">• "How Life Imitates Chess" - Garry Kasparov</li>
-                        <li style="margin-bottom: 0.75rem;">• "The Adventures of Sherlock Holmes" - Sir Arthur Conan Doyle</li>
-                    </ul>
-                </div>
-                
-                <!-- GitHub -->
-                <div class="github-card">
-                    <h3 style="margin-bottom: 1rem;">🐙 GITHUB</h3>
-                    <div style="font-family: 'JetBrains Mono'; background: rgba(10,25,47,0.05); padding: 0.75rem; border-radius: 8px;">
-                        <div><a href="https://github.com/h4nnah-byte" target="_blank" style="color: #2A6B7C; text-decoration: none;">github.com/h4nnah-byte</a></div>
-                        <div style="font-size:0.8rem; color:#4A5A6A;">building in public</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- ===== CV SECTION with Photo Below Skills Title ===== -->
-<section id="cv" class="card">
-    <div class="card-content">
-        <h2><span class="section-number">02</span> CV · EDUCATION & SKILLS</h2>
-        
-        <div class="grid-cv">
-            <!-- Left: Education (wider column) -->
-            <div>
-                <div class="inner-card">
-                    <h3>EDUCATION</h3>
-                    <div class="module-row">
-                        <span class="module-year">2025-29</span>
-                        <span>Queen Mary University of London · Mathematics and Statistics BSc</span>
-                    </div>
-                    <div class="module-row">
-                        <span class="module-year">2023-25</span>
-                        <span>A-Levels: A* Mathematics, A History, B Further Mathematics, B English Literature</span>
-                    </div>
-                    <div class="module-row">
-                        <span class="module-year">2018-23</span>
-                        <span>GCSEs: six Grade 9s, including Mathematics, Chemistry, English Literature</span>
-                    </div>
-                </div>
-                
-                <div class="inner-card" style="margin-top: 1.5rem;">
-                    <h3>📚 MODULES</h3>
-                    <div style="margin-bottom: 1rem;">
-                        <div style="font-weight: 600; color:#2A6B7C; margin-bottom: 0.5rem;">Semester A</div>
-                        <div class="module-row">
-                            <span class="module-year">MTH4300</span>
-                            <span>Introduction to Analysis with Calculus</span>
-                        </div>
-                        <div class="module-row">
-                            <span class="module-year">MTH4500</span>
-                            <span>Probability and Statistics</span>
-                        </div>
-                        <div class="module-row">
-                            <span class="module-year">MTH4213</span>
-                            <span>Numbers, Sets and Functions</span>
-                        </div>
-                        <div class="module-row">
-                            <span class="module-year">MTH4000</span>
-                            <span>Programming in Python I</span>
-                        </div>
-                    </div>
-                    <div style="margin-bottom: 1rem;">
-                        <div style="font-weight: 600; color:#2A6B7C; margin-bottom: 0.5rem;">Semester B (Current)</div>
-                        <div class="module-row">
-                            <span class="module-year">MTH4300</span>
-                            <span>Introduction to Analysis with Calculus</span>
-                        </div>
-                        <div class="module-row">
-                            <span class="module-year">MTH4500</span>
-                            <span>Probability and Statistics</span>
-                        </div>
-                        <div class="module-row">
-                            <span class="module-year">MTH4104</span>
-                            <span>Introduction to Algebra</span>
-                        </div>
-                        <div class="module-row">
-                            <span class="module-year">MTH4215</span>
-                            <span>Vectors and Matrices</span>
-                        </div>
-                    </div>
+                <div class="grid-sidebar">
                     <div>
-                        <div style="font-weight: 600; color:#2A6B7C; margin-bottom: 0.5rem;">Year 2</div>
-                        <div class="module-row">
-                            <span class="module-year"></span>
-                            <span><span class="badge-construction">in construction</span></span>
+                        <!-- AI Bias Auditor -->
+                        <div class="inner-card" style="margin-bottom: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                <h3 style="margin-bottom: 0;">🤖 AI BIAS AUDITOR</h3>
+                                <span class="date-badge">March 2026</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <span class="badge" style="background: rgba(255, 215, 0, 0.15); color: #8B6B2A; border-color: rgba(255, 215, 0, 0.3);">🏆 Best Overall Presentation · QMUL Hackathon</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <p>I had originally joined the hackathon for the experience, but it seems our team managed to leave with so much more! We had the opportunity to learn vibe coding, the importance of well-trained AI, and how to analyse data using such.</p>
+                                <p style="margin-top: 0.75rem;">The chosen topic had my team quantifying AI bias to show the significant risks of using AI in companies without the proper training of both the AI and us humans.</p>
+                                <p style="margin-top: 0.75rem;">I also vibe-coded my very first website in just under 12 hours. It may be full of bugs, but that just adds character!</p>
+                            </div>
+                            <div style="margin-bottom: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">Data Analysis</span>
+                                <span class="skill-tag">Git</span>
+                                <span class="skill-tag">Generative AI</span>
+                                <span class="skill-tag">HTML</span>
+                                <span class="skill-tag">CSS</span>
+                                <span class="skill-tag">JavaScript</span>
+                                <span class="skill-tag">Vibe Coding</span>
+                            </div>
+                            <a href="https://www.linkedin.com/in/hannahhamid/" target="_blank" class="button-link">🔗 See my LinkedIn post about it →</a>
+                            
+                            <img src="https://www.dropbox.com/scl/fi/8zf0r6onwjxtqsg8xjay6/577e37fd-15cd-407a-a2a6-546d4e0b4b5f.jpeg?rlkey=nue95ecdsgh595hhbqpfgfhb1&st=sqrkkc1b&raw=1" class="photo-sixteen-nine" alt="Hackathon project photo">
+                        </div>
+                        
+                        <!-- This Website -->
+                        <div class="inner-card" style="margin-bottom: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                <h3 style="margin-bottom: 0;">🌐 THIS WEBSITE</h3>
+                                <span class="date-badge">in progress · March 2026</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <span style="background: rgba(156, 39, 176, 0.1); color: #6a1b9a; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.7rem; font-weight: 600; border: 1px solid rgba(156, 39, 176, 0.3); display: inline-flex; align-items: center; gap: 0.2rem;">✨ Vibe Coded</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <p>I built this website as a personal portfolio, but mainly as a way for me to experiment with vibe coding!</p>
+                                <p style="margin-top: 0.75rem;">I had the opportunity to learn pieces of HTML, CSS, and JavaScript. But, most importantly, I've learned how to efficiently vibe code (and had fun doing it!)</p>
+                            </div>
+                            <div style="margin-bottom: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                                <span class="skill-tag">HTML</span>
+                                <span class="skill-tag">CSS</span>
+                                <span class="skill-tag">JavaScript</span>
+                                <span class="skill-tag">Vibe Coding</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <!-- RECENTLY LISTENING - Interactive Swiper -->
+                        <div class="inner-card" style="margin-bottom: 1.5rem;">
+                            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <h3 style="margin: 0;">🎧 RECENTLY LISTENING</h3>
+                                <a href="https://dataskeptic.com/podcast" target="_blank" style="color: #2A6B7C; text-decoration: none; font-size: 0.8rem;">📻 Data Skeptic</a>
+                            </div>
+                            
+                            <div style="position: relative; margin: 1rem 0;">
+                                <!-- Episode card with floating badge -->
+                                <div style="background: rgba(42, 107, 124, 0.05); border-radius: 12px; padding: 1.2rem; border: 1px solid rgba(42, 107, 124, 0.2); position: relative;" id="episodeCard">
+                                    <!-- Yellow badge (only visible on episode 1) -->
+                                    <div id="currentBadge" style="position: absolute; top: -8px; left: 15px; background: rgba(255, 215, 0, 0.15); color: #8B6B2A; padding: 0.15rem 0.7rem; border-radius: 20px; font-size: 0.65rem; font-weight: 700; border: 1px solid rgba(255, 215, 0, 0.3); display: flex; align-items: center; text-transform: uppercase; letter-spacing: 0.5px;">✨ CURRENTLY LISTENING</div>
+                                    
+                                    <div style="font-weight: 600; font-size: 0.95rem; margin: 0.75rem 0 0.25rem 0;">
+                                        <a href="#" id="episodeLink" target="_blank" style="color: #0A192F; text-decoration: none;">Detecting Cheating in Chess</a>
+                                    </div>
+                                    <div style="font-size: 0.7rem; color: #6c757d;" id="episodeDate">May 2015 · 44 min</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Swiper controls -->
+                            <div style="display: flex; align-items: center; justify-content: center; gap: 1.5rem; margin: 1rem 0 0.25rem;">
+                                <div onclick="prevEpisode()" style="background: rgba(42, 107, 124, 0.1); border: 1px solid rgba(42, 107, 124, 0.2); color: #2A6B7C; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; cursor: pointer; transition: all 0.2s;">←</div>
+                                <span style="font-size: 0.8rem; color: #6c757d;" id="episodeCounter">1/4</span>
+                                <div onclick="nextEpisode()" style="background: rgba(42, 107, 124, 0.1); border: 1px solid rgba(42, 107, 124, 0.2); color: #2A6B7C; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; cursor: pointer; transition: all 0.2s;">→</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Currently Learning -->
+                        <div class="inner-card" style="margin-bottom: 1.5rem;">
+                            <h3>🧠 CURRENTLY LEARNING</h3>
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                                <span class="skill-tag">R</span>
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">HTML</span>
+                                <span class="skill-tag">CSS</span>
+                                <span class="skill-tag">Google Colab</span>
+                                <span class="skill-tag">Git/GitHub</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Currently Reading -->
+                        <div class="inner-card" style="margin-bottom: 1.5rem;">
+                            <h3>📚 CURRENTLY READING</h3>
+                            <ul style="list-style: none;">
+                                <li style="margin-bottom: 0.75rem;">• "How Life Imitates Chess" - Garry Kasparov</li>
+                                <li style="margin-bottom: 0.75rem;">• "The Adventures of Sherlock Holmes" - Sir Arthur Conan Doyle</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- GitHub -->
+                        <div class="github-card">
+                            <h3 style="margin-bottom: 1rem;">🐙 GITHUB</h3>
+                            <div style="font-family: 'JetBrains Mono'; background: rgba(10,25,47,0.05); padding: 0.75rem; border-radius: 8px;">
+                                <div><a href="https://github.com/h4nnah-byte" target="_blank" style="color: #2A6B7C; text-decoration: none;">github.com/h4nnah-byte</a></div>
+                                <div style="font-size:0.8rem; color:#4A5A6A;">building in public</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <!-- Right: Skills + Data Generator + Upcoming Skills -->
-            <div>
-                <!-- SKILLS box -->
-                <div class="inner-card">
-                    <h3>📊 SKILLS</h3>
-                    
-                    <!-- Photo added below Skills title -->
-                    <div style="margin: 1.5rem 0;">
-                        <img src="https://www.dropbox.com/scl/fi/j9rardau0nsyuh1lg8j1e/Image-16-03-2026-at-08.13.png?rlkey=rbgu0cp1e1pfzemtzhgsoxzv6&st=wkst1hra&raw=1" alt="Skills visualization" style="width: 100%; border-radius: 16px; border: 2px solid rgba(42, 107, 124, 0.3);">
-                    </div>
-                </div>
+        </section>
+        
+        <!-- ===== CV SECTION with Data Point Generator ===== -->
+        <section id="cv" class="card">
+            <div class="card-content">
+                <h2><span class="section-number">02</span> CV · EDUCATION & SKILLS</h2>
                 
-                <!-- DATA POINT GENERATOR box (NEW) -->
-                <div class="inner-card" style="margin-top: 1.5rem;">
-                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
-                        <span style="font-size: 1.5rem;">📊</span>
-                        <h3 style="margin: 0;">DATA POINT GENERATOR</h3>
-                    </div>
-                    <div style="color: #6c757d; font-size: 0.9rem; margin-bottom: 1rem; border-left: 3px solid #2A6B7C; padding-left: 1rem;">
-                        Click below to discover random facts about me
+                <div class="grid-cv">
+                    <!-- Left: Education -->
+                    <div>
+                        <div class="inner-card">
+                            <h3>EDUCATION</h3>
+                            <div class="module-row">
+                                <span class="module-year">2025-29</span>
+                                <span>Queen Mary University of London · Mathematics and Statistics BSc</span>
+                            </div>
+                            <div class="module-row">
+                                <span class="module-year">2023-25</span>
+                                <span>A-Levels: A* Mathematics, A History, B Further Mathematics, B English Literature</span>
+                            </div>
+                            <div class="module-row">
+                                <span class="module-year">2018-23</span>
+                                <span>GCSEs: six Grade 9s, including Mathematics, Chemistry, English Literature</span>
+                            </div>
+                        </div>
+                        
+                        <div class="inner-card" style="margin-top: 1.5rem;">
+                            <h3>📚 MODULES</h3>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-weight: 600; color:#2A6B7C; margin-bottom: 0.5rem;">Semester A</div>
+                                <div class="module-row">
+                                    <span class="module-year">MTH4300</span>
+                                    <span>Introduction to Analysis with Calculus</span>
+                                </div>
+                                <div class="module-row">
+                                    <span class="module-year">MTH4500</span>
+                                    <span>Probability and Statistics</span>
+                                </div>
+                                <div class="module-row">
+                                    <span class="module-year">MTH4213</span>
+                                    <span>Numbers, Sets and Functions</span>
+                                </div>
+                                <div class="module-row">
+                                    <span class="module-year">MTH4000</span>
+                                    <span>Programming in Python I</span>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-weight: 600; color:#2A6B7C; margin-bottom: 0.5rem;">Semester B (Current)</div>
+                                <div class="module-row">
+                                    <span class="module-year">MTH4300</span>
+                                    <span>Introduction to Analysis with Calculus</span>
+                                </div>
+                                <div class="module-row">
+                                    <span class="module-year">MTH4500</span>
+                                    <span>Probability and Statistics</span>
+                                </div>
+                                <div class="module-row">
+                                    <span class="module-year">MTH4104</span>
+                                    <span>Introduction to Algebra</span>
+                                </div>
+                                <div class="module-row">
+                                    <span class="module-year">MTH4215</span>
+                                    <span>Vectors and Matrices</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="font-weight: 600; color:#2A6B7C; margin-bottom: 0.5rem;">Year 2</div>
+                                <div class="module-row">
+                                    <span class="module-year"></span>
+                                    <span><span class="badge-construction">in construction</span></span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     
-                    <div style="background: rgba(42, 107, 124, 0.05); border-radius: 18px; padding: 1.5rem; border: 1px solid rgba(42, 107, 124, 0.2); margin: 1rem 0; min-height: 100px; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; color: #0A192F; text-align: center; line-height: 1.5;" id="dataPoint">
-                        🏆 My team won 'Best Overall Presentation' at the QMUL Hackathon.
-                    </div>
-                    
-                    <button onclick="generateDataPoint()" style="background: rgba(255, 215, 0, 0.2); color: #8B6B2A; padding: 0.8rem 2rem; border-radius: 50px; font-size: 1rem; font-weight: 600; border: 2px solid rgba(255, 215, 0, 0.4); cursor: pointer; width: 100%; letter-spacing: 0.5px; text-transform: uppercase;">⚡ GENERATE NEW FACT</button>
-                </div>
-                
-                <!-- UPCOMING SKILLS box -->
-                <div class="inner-card" style="margin-top: 1.5rem;">
-                    <h3>🔮 UPCOMING SKILLS</h3>
-                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-                        <span class="upcoming-skill-tag">JavaScript</span>
-                        <span class="upcoming-skill-tag">Machine Learning</span>
-                        <span class="upcoming-skill-tag">SQL</span>
+                    <!-- Right: Skills + Data Generator + Upcoming Skills -->
+                    <div>
+                        <!-- SKILLS box -->
+                        <div class="inner-card">
+                            <h3>📊 SKILLS</h3>
+                            <div style="margin: 1.5rem 0;">
+                                <img src="https://www.dropbox.com/scl/fi/j9rardau0nsyuh1lg8j1e/Image-16-03-2026-at-08.13.png?rlkey=rbgu0cp1e1pfzemtzhgsoxzv6&st=wkst1hra&raw=1" alt="Skills visualization" style="width: 100%; border-radius: 16px; border: 2px solid rgba(42, 107, 124, 0.3);">
+                            </div>
+                        </div>
+                        
+                        <!-- DATA POINT GENERATOR box -->
+                        <div class="inner-card" style="margin-top: 1.5rem;">
+                            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                <span style="font-size: 1.5rem;">📊</span>
+                                <h3 style="margin: 0;">DATA POINT GENERATOR</h3>
+                            </div>
+                            <div style="color: #6c757d; font-size: 0.9rem; margin-bottom: 1rem; border-left: 3px solid #2A6B7C; padding-left: 1rem;">
+                                Click below to discover random facts about me
+                            </div>
+                            
+                            <div style="background: rgba(42, 107, 124, 0.05); border-radius: 18px; padding: 1.5rem; border: 1px solid rgba(42, 107, 124, 0.2); margin: 1rem 0; min-height: 100px; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; color: #0A192F; text-align: center; line-height: 1.5;" id="dataPoint">
+                                🏆 My team won 'Best Overall Presentation' at the QMUL Hackathon.
+                            </div>
+                            
+                            <button onclick="generateDataPoint()" style="background: rgba(255, 215, 0, 0.2); color: #8B6B2A; padding: 0.8rem 2rem; border-radius: 50px; font-size: 1rem; font-weight: 600; border: 2px solid rgba(255, 215, 0, 0.4); cursor: pointer; width: 100%; letter-spacing: 0.5px; text-transform: uppercase;">⚡ GENERATE NEW FACT</button>
+                        </div>
+                        
+                        <!-- UPCOMING SKILLS box -->
+                        <div class="inner-card" style="margin-top: 1.5rem;">
+                            <h3>🔮 UPCOMING SKILLS</h3>
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                                <span class="upcoming-skill-tag">JavaScript</span>
+                                <span class="upcoming-skill-tag">Machine Learning</span>
+                                <span class="upcoming-skill-tag">SQL</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
+        
         <!-- Experience Section -->
         <section id="experience" class="card">
             <div class="card-content">
@@ -1319,191 +1352,170 @@
             </div>
         </section>
         
-<!-- ===== CONTACT SECTION with Logo Card ===== -->
-<section id="contact" class="card">
-    <div class="card-content">
-        <h2><span class="section-number">04</span> CONTACT</h2>
-        
-        <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
-            <!-- Left side: Contact cards (email removed) -->
-            <div style="flex: 1.5; min-width: 300px;">
-                <!-- Contact cards - now only LinkedIn and GitHub -->
-                <div class="contact-grid" style="width: 100%; margin-bottom: 1.5rem; grid-template-columns: repeat(2, 1fr);">
-                    <div class="contact-card">
-                        <div class="contact-icon">🔗</div>
-                        <div class="contact-title">LinkedIn</div>
-                        <div class="contact-detail"><a href="https://www.linkedin.com/in/hannahhamid/" target="_blank">linkedin.com/in/hannahhamid</a></div>
-                    </div>
-                    
-                    <div class="contact-card">
-                        <div class="contact-icon">🐙</div>
-                        <div class="contact-title">GitHub</div>
-                        <div class="contact-detail"><a href="https://github.com/h4nnah-byte" target="_blank">github.com/h4nnah-byte</a></div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Right side: Coffee Power Meter + Logo Card -->
-            <div style="flex: 2; min-width: 300px; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
-                <!-- COFFEE POWER METER -->
-                <div style="background: white; border-radius: 26px; padding: 1.5rem; max-width: 300px; width: 100%; box-shadow: 0 8px 32px rgba(0,0,0,0.15); border: 1px solid rgba(255,255,255,0.4);">
-                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
-                        <span style="font-size: 2rem;">☕</span>
-                        <h3 style="color: #2A6B7C; margin: 0; font-size: 1.2rem;">COFFEE POWER METER</h3>
-                    </div>
-                    
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                        <span style="color: #0A192F; font-weight: 500;">Vibe coding energy</span>
-                        <span id="coffeePercent" style="font-weight: 600;">0%</span>
-                    </div>
-                    <div style="background: rgba(42, 107, 124, 0.1); height: 20px; border-radius: 30px; overflow: hidden; margin-bottom: 1rem; border: 1px solid rgba(42, 107, 124, 0.2);">
-                        <div id="coffeeMeter" style="background: #8B6B2A; height: 100%; width: 0%; border-radius: 30px; transition: width 0.3s ease;"></div>
-                    </div>
-                    
-                    <div style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; margin: 1rem 0;">
-                        <button id="addCoffeeBtn" onclick="addCoffee()" style="background: rgba(255, 215, 0, 0.2); color: #8B6B2A; padding: 0.8rem 1.5rem; border-radius: 40px; font-size: 0.9rem; font-weight: 600; border: 2px solid rgba(255, 215, 0, 0.4); cursor: pointer; width: 140px;">➕ ADD COFFEE</button>
-                        <button id="writeCodeBtn" onclick="writeCode()" style="background: rgba(255, 215, 0, 0.2); color: #8B6B2A; padding: 0.8rem 1.5rem; border-radius: 40px; font-size: 0.9rem; font-weight: 600; border: 2px solid rgba(255, 215, 0, 0.4); cursor: pointer; width: 140px;" disabled>💻 WRITE CODE</button>
-                    </div>
-                    
-                    <div style="background: rgba(42, 107, 124, 0.05); padding: 1rem; border-radius: 16px; font-size: 0.8rem;">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
-                            <span>☕ Coffee: <span id="coffeeCount">0</span></span>
-                            <span>📝 Lines: <span id="codeCount">0</span></span>
-                        </div>
-                        <div id="message" style="font-family: 'JetBrains Mono'; font-size: 0.75rem; color: #1a5b6c; margin-top: 0.5rem; text-align: center;">> Click coffee to start ⚡</div>
-                    </div>
-                    
-                    <div id="phaseIndicator" style="font-size: 0.65rem; color: #8a9aa8; margin-top: 0.5rem; text-align: center; font-style: italic;">☕ Coffee phase: Build energy to 100%</div>
-                </div>
+        <!-- Contact Section with Logo on Left, Coffee on Right -->
+        <section id="contact" class="card">
+            <div class="card-content">
+                <h2><span class="section-number">04</span> CONTACT</h2>
                 
-                <!-- Logo Card -->
-                <div class="bottom-logo-card" style="max-width: 250px;">
-                    <div class="bottom-logo-content">
-                        <div class="bottom-logo">
-                            <span class="bottom-h">H²</span>
-                            <span class="bottom-name">HANNAH HAMID</span>
+                <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+                    <!-- Left side: Contact cards + Logo Card -->
+                    <div style="flex: 1; min-width: 300px;">
+                        <!-- Contact cards -->
+                        <div class="contact-grid" style="width: 100%; margin-bottom: 1.5rem;">
+                            <div class="contact-card">
+                                <div class="contact-icon">🔗</div>
+                                <div class="contact-title">LinkedIn</div>
+                                <div class="contact-detail"><a href="https://www.linkedin.com/in/hannahhamid/" target="_blank">linkedin.com/in/hannahhamid</a></div>
+                            </div>
+                            
+                            <div class="contact-card">
+                                <div class="contact-icon">🐙</div>
+                                <div class="contact-title">GitHub</div>
+                                <div class="contact-detail"><a href="https://github.com/h4nnah-byte" target="_blank">github.com/h4nnah-byte</a></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Logo Card (now on left, below contact cards) -->
+                        <div style="display: flex; justify-content: center; margin-top: 1rem;">
+                            <div class="bottom-logo-card" style="max-width: 300px;">
+                                <div class="bottom-logo-content">
+                                    <div class="bottom-logo">
+                                        <span class="bottom-h">H²</span>
+                                        <span class="bottom-name">HANNAH HAMID</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right side: Coffee Power Meter (alone) -->
+                    <div style="flex: 1; min-width: 300px; display: flex; justify-content: center; align-items: center;">
+                        <!-- COFFEE POWER METER -->
+                        <div style="background: white; border-radius: 26px; padding: 1.5rem; max-width: 350px; width: 100%; box-shadow: 0 8px 32px rgba(0,0,0,0.15); border: 1px solid rgba(255,255,255,0.4);">
+                            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+                                <span style="font-size: 2rem;">☕</span>
+                                <h3 style="color: #2A6B7C; margin: 0; font-size: 1.2rem;">COFFEE POWER METER</h3>
+                            </div>
+                            
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span style="color: #0A192F; font-weight: 500;">Vibe coding energy</span>
+                                <span id="coffeePercent" style="font-weight: 600;">0%</span>
+                            </div>
+                            <div style="background: rgba(42, 107, 124, 0.1); height: 20px; border-radius: 30px; overflow: hidden; margin-bottom: 1rem; border: 1px solid rgba(42, 107, 124, 0.2);">
+                                <div id="coffeeMeter" style="background: #8B6B2A; height: 100%; width: 0%; border-radius: 30px; transition: width 0.3s ease;"></div>
+                            </div>
+                            
+                            <div style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; margin: 1rem 0;">
+                                <button id="addCoffeeBtn" onclick="addCoffee()" style="background: rgba(255, 215, 0, 0.2); color: #8B6B2A; padding: 0.8rem 1.5rem; border-radius: 40px; font-size: 0.9rem; font-weight: 600; border: 2px solid rgba(255, 215, 0, 0.4); cursor: pointer; width: 140px;">➕ ADD COFFEE</button>
+                                <button id="writeCodeBtn" onclick="writeCode()" style="background: rgba(255, 215, 0, 0.2); color: #8B6B2A; padding: 0.8rem 1.5rem; border-radius: 40px; font-size: 0.9rem; font-weight: 600; border: 2px solid rgba(255, 215, 0, 0.4); cursor: pointer; width: 140px;" disabled>💻 WRITE CODE</button>
+                            </div>
+                            
+                            <div style="background: rgba(42, 107, 124, 0.05); padding: 1rem; border-radius: 16px; font-size: 0.8rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
+                                    <span>☕ Coffee: <span id="coffeeCount">0</span></span>
+                                    <span>📝 Lines: <span id="codeCount">0</span></span>
+                                </div>
+                                <div id="message" style="font-family: 'JetBrains Mono'; font-size: 0.75rem; color: #1a5b6c; margin-top: 0.5rem; text-align: center;">> Click coffee to start ⚡</div>
+                            </div>
+                            
+                            <div id="phaseIndicator" style="font-size: 0.65rem; color: #8a9aa8; margin-top: 0.5rem; text-align: center; font-style: italic;">☕ Coffee phase: Build energy to 100%</div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
+        
         <!-- Footer -->
         <div class="footer-note">
             🌱 Last updated: March 2026 · Designed and directed by Hannah, built with AI assistance
         </div>
     </div>
     
+    <!-- Combined JavaScript for all interactive widgets -->
     <script>
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.nav-link');
-        
-        function updateActiveLink() {
-            let current = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (window.scrollY >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        }
-        
-        window.addEventListener('scroll', updateActiveLink);
-        window.addEventListener('load', updateActiveLink);
-    </script>
-<script>
-// ===== PODCAST SWIPER =====
-const episodes = [
-    { title: "Detecting Cheating in Chess", date: "May 2015 · 44 min", link: "https://open.spotify.com/episode/4ONatSHw5XzYSMtXSMGWlu" },
-    { title: "Shakespeare, Abiogenesis, and Exoplanets", date: "Sep 2015 · 58 min", link: "https://open.spotify.com/episode/5tmFTOmrJ2OxXgBn3MZEGu?si=bc3531cbcfef4711" },
-    { title: "The Library Problem", date: "Mar 2016 · 41 min", link: "https://open.spotify.com/episode/6hRP9neRVpHg90M7nMbZyI?si=62bbb8b1a736428e" },
-    { title: "Auditing Algorithms", date: "Oct 2024 · 53 min", link: "https://open.spotify.com/episode/0okKP8a9zjIoHyEl2oehkN?si=b845657e066a48aa" }
-];
-let currentEpisode = 0;
-function updateEpisode() {
-    const link = document.getElementById('episodeLink');
-    const date = document.getElementById('episodeDate');
-    const counter = document.getElementById('episodeCounter');
-    const badge = document.getElementById('currentBadge');
-    const card = document.getElementById('episodeCard');
-    if (!link || !date || !counter || !badge || !card) return;
-    link.innerText = episodes[currentEpisode].title;
-    link.href = episodes[currentEpisode].link;
-    date.innerText = episodes[currentEpisode].date;
-    counter.innerText = `${currentEpisode + 1}/4`;
-    badge.style.display = currentEpisode === 0 ? 'flex' : 'none';
-    card.style.background = currentEpisode === 0 ? 'rgba(255, 215, 0, 0.05)' : 'rgba(42, 107, 124, 0.05)';
-}
-function nextEpisode() { currentEpisode = (currentEpisode + 1) % 4; updateEpisode(); }
-function prevEpisode() { currentEpisode = (currentEpisode - 1 + 4) % 4; updateEpisode(); }
-
-// ===== DATA POINT GENERATOR =====
-const dataPoints = [
-    "🎓 I scored 91% in my Probability & Statistics module – confidence intervals are genuinely my thing.",
-    "📈 I've been teaching GCSE Maths for over 3 years and helped one student jump from a U to a Grade 5.",
-    "🏆 My team won 'Best Overall Presentation' at the QMUL Hackathon for our AI Bias Auditor project.",
-    "💻 I vibe-coded this entire website in under 12 hours. Yes, it has bugs. No, I don't mind.",
-    "📊 The BILLY bookcase has sold over 40 million units since 1979. Stacked flat, they'd reach 17x higher than Mount Everest.",
-    "📻 I listen to the Data Skeptic podcast while commuting – current obsession: algorithmic bias.",
-    "🎭 'Though this be madness, yet there is method in't' is my coding motto.",
-    "⚡ I'm open for internships now and placement in 2027-2028 – let's chat!",
-    "🤖 For our AI Bias Auditor project, we built and compared 3 machine learning models: Logistic Regression, Random Forest, and Decision Tree – all trained to predict job placements.",
-    "📉 Our analysis in the AI Bias Auditor project showed that AI can amplify existing societal disparities – even when the original data is fair."
-];
-let lastDataIndex = 2;
-const dataPointElement = document.getElementById('dataPoint');
-if (dataPointElement) { dataPointElement.innerHTML = dataPoints[2]; }
-function generateDataPoint() {
-    let newIndex;
-    do { newIndex = Math.floor(Math.random() * dataPoints.length); } while (newIndex === lastDataIndex);
-    lastDataIndex = newIndex;
-    const el = document.getElementById('dataPoint');
-    if (el) el.innerHTML = dataPoints[lastDataIndex];
-}
-
-// ===== COFFEE POWER METER =====
-let coffeeCount = 0, codeCount = 0, powerLevel = 0, isIncreasing = true;
-const messages = {
-    0: "> Help I'm stuck in an infinite loop 🔄",
-    20: "> Coffee levels: Critical ☠️",
-    25: "> Running on fumes 🥱",
-    40: "> To code or not to code, that is the question 🎭",
-    50: "> My code doesn't work and I don't know why 😭",
-    75: "> My code WORKS now, and I don't know why 🤷",
-    80: "> The vibes are vibing",
-    100: "> 95% confidence interval: [works, doesn't work]"
-};
-function updateCoffee() {
-    const p = document.getElementById('coffeePercent'); if(p) p.innerText = powerLevel+'%';
-    const m = document.getElementById('coffeeMeter'); if(m) m.style.width = powerLevel+'%';
-    const c = document.getElementById('coffeeCount'); if(c) c.innerText = coffeeCount;
-    const l = document.getElementById('codeCount'); if(l) l.innerText = codeCount;
-    const msg = document.getElementById('message'); if(msg) msg.innerText = messages[powerLevel] || "> " + ["In the zone ⚡","Debug mode: ON 🐛","10/10 would vibe code again ✨","This is fine 🔥","Vibe level: immaculate ✨"][Math.floor(Math.random()*5)];
-    const add = document.getElementById('addCoffeeBtn'); const write = document.getElementById('writeCodeBtn');
-    const phase = document.getElementById('phaseIndicator');
-    if (powerLevel >= 100) {
-        if(add) add.disabled = true; if(write) write.disabled = false; isIncreasing = false;
-        if(phase) phase.innerText = "💻 Code phase: Drain energy to 0%";
-    } else if (powerLevel <= 0) {
-        if(add) add.disabled = false; if(write) write.disabled = true; isIncreasing = true;
-        if(phase) phase.innerText = "☕ Coffee phase: Build energy to 100%";
-    } else {
-        if(add) add.disabled = !isIncreasing; if(write) write.disabled = isIncreasing;
+    // ===== PODCAST SWIPER =====
+    const episodes = [
+        { title: "Detecting Cheating in Chess", date: "May 2015 · 44 min", link: "https://open.spotify.com/episode/4ONatSHw5XzYSMtXSMGWlu" },
+        { title: "Shakespeare, Abiogenesis, and Exoplanets", date: "Sep 2015 · 58 min", link: "https://open.spotify.com/episode/5tmFTOmrJ2OxXgBn3MZEGu?si=bc3531cbcfef4711" },
+        { title: "The Library Problem", date: "Mar 2016 · 41 min", link: "https://open.spotify.com/episode/6hRP9neRVpHg90M7nMbZyI?si=62bbb8b1a736428e" },
+        { title: "Auditing Algorithms", date: "Oct 2024 · 53 min", link: "https://open.spotify.com/episode/0okKP8a9zjIoHyEl2oehkN?si=b845657e066a48aa" }
+    ];
+    let currentEpisode = 0;
+    function updateEpisode() {
+        const link = document.getElementById('episodeLink');
+        const date = document.getElementById('episodeDate');
+        const counter = document.getElementById('episodeCounter');
+        const badge = document.getElementById('currentBadge');
+        const card = document.getElementById('episodeCard');
+        if (!link || !date || !counter || !badge || !card) return;
+        link.innerText = episodes[currentEpisode].title;
+        link.href = episodes[currentEpisode].link;
+        date.innerText = episodes[currentEpisode].date;
+        counter.innerText = `${currentEpisode + 1}/4`;
+        badge.style.display = currentEpisode === 0 ? 'flex' : 'none';
+        card.style.background = currentEpisode === 0 ? 'rgba(255, 215, 0, 0.05)' : 'rgba(42, 107, 124, 0.05)';
     }
-}
-function addCoffee() { if (powerLevel < 100 && isIncreasing) { coffeeCount++; powerLevel = Math.min(100, powerLevel+25); updateCoffee(); } }
-function writeCode() { if (powerLevel > 0 && !isIncreasing) { codeCount += 10; powerLevel = Math.max(0, powerLevel-20); updateCoffee(); } }
+    function nextEpisode() { currentEpisode = (currentEpisode + 1) % 4; updateEpisode(); }
+    function prevEpisode() { currentEpisode = (currentEpisode - 1 + 4) % 4; updateEpisode(); }
 
-window.addEventListener('load', function() { updateEpisode(); updateCoffee(); });
-</script>
+    // ===== DATA POINT GENERATOR =====
+    const dataPoints = [
+        "🎓 I scored 91% in my Probability & Statistics module – confidence intervals are genuinely my thing.",
+        "📈 I've been teaching GCSE Maths for over 3 years and helped one student jump from a U to a Grade 5.",
+        "🏆 My team won 'Best Overall Presentation' at the QMUL Hackathon for our AI Bias Auditor project.",
+        "💻 I vibe-coded this entire website in under 12 hours. Yes, it has bugs. No, I don't mind.",
+        "📊 The BILLY bookcase has sold over 40 million units since 1979. Stacked flat, they'd reach 17x higher than Mount Everest.",
+        "📻 I listen to the Data Skeptic podcast while commuting – current obsession: algorithmic bias.",
+        "🎭 'Though this be madness, yet there is method in't' is my coding motto.",
+        "⚡ I'm open for internships now and placement in 2027-2028 – let's chat!",
+        "🤖 For our AI Bias Auditor project, we built and compared 3 machine learning models: Logistic Regression, Random Forest, and Decision Tree – all trained to predict job placements.",
+        "📉 Our analysis in the AI Bias Auditor project showed that AI can amplify existing societal disparities – even when the original data is fair."
+    ];
+    let lastDataIndex = 2;
+    const dataPointElement = document.getElementById('dataPoint');
+    if (dataPointElement) { dataPointElement.innerHTML = dataPoints[2]; }
+    function generateDataPoint() {
+        let newIndex;
+        do { newIndex = Math.floor(Math.random() * dataPoints.length); } while (newIndex === lastDataIndex);
+        lastDataIndex = newIndex;
+        const el = document.getElementById('dataPoint');
+        if (el) el.innerHTML = dataPoints[lastDataIndex];
+    }
+
+    // ===== COFFEE POWER METER =====
+    let coffeeCount = 0, codeCount = 0, powerLevel = 0, isIncreasing = true;
+    const messages = {
+        0: "> Help I'm stuck in an infinite loop 🔄",
+        20: "> Coffee levels: Critical ☠️",
+        25: "> Running on fumes 🥱",
+        40: "> To code or not to code, that is the question 🎭",
+        50: "> My code doesn't work and I don't know why 😭",
+        75: "> My code WORKS now, and I don't know why 🤷",
+        80: "> The vibes are vibing",
+        100: "> 95% confidence interval: [works, doesn't work]"
+    };
+    function updateCoffee() {
+        const p = document.getElementById('coffeePercent'); if(p) p.innerText = powerLevel+'%';
+        const m = document.getElementById('coffeeMeter'); if(m) m.style.width = powerLevel+'%';
+        const c = document.getElementById('coffeeCount'); if(c) c.innerText = coffeeCount;
+        const l = document.getElementById('codeCount'); if(l) l.innerText = codeCount;
+        const msg = document.getElementById('message'); if(msg) msg.innerText = messages[powerLevel] || "> " + ["In the zone ⚡","Debug mode: ON 🐛","10/10 would vibe code again ✨","This is fine 🔥","Vibe level: immaculate ✨"][Math.floor(Math.random()*5)];
+        const add = document.getElementById('addCoffeeBtn'); const write = document.getElementById('writeCodeBtn');
+        const phase = document.getElementById('phaseIndicator');
+        if (powerLevel >= 100) {
+            if(add) add.disabled = true; if(write) write.disabled = false; isIncreasing = false;
+            if(phase) phase.innerText = "💻 Code phase: Drain energy to 0%";
+        } else if (powerLevel <= 0) {
+            if(add) add.disabled = false; if(write) write.disabled = true; isIncreasing = true;
+            if(phase) phase.innerText = "☕ Coffee phase: Build energy to 100%";
+        } else {
+            if(add) add.disabled = !isIncreasing; if(write) write.disabled = isIncreasing;
+        }
+    }
+    function addCoffee() { if (powerLevel < 100 && isIncreasing) { coffeeCount++; powerLevel = Math.min(100, powerLevel+25); updateCoffee(); } }
+    function writeCode() { if (powerLevel > 0 && !isIncreasing) { codeCount += 10; powerLevel = Math.max(0, powerLevel-20); updateCoffee(); } }
+
+    window.addEventListener('load', function() { updateEpisode(); updateCoffee(); });
+    </script>
 </body>
 </html>
