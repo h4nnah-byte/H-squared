@@ -948,7 +948,7 @@
                             Mathematics & Statistics BSc · QMUL · 2025-2029
                         </div>
                         <div style="margin: 1.5rem 0;" class="clearfix">
-                            <img src="https://www.dropbox.com/scl/fi/zz36l7bkn2xhjpldntzom/IMG_4435.jpeg?rlkey=2hhg85azy2m7bn21pd9crzye0&st=kdkc164a&raw=1" class="photo-circle float-left" style="margin-right: 1.5rem; object-fit: cover;" alt="Hannah Hamid profile">
+                            <img src="https://www.dropbox.com/scl/fi/vdviyft00hg4xirmjkp50/Image.jpeg?rlkey=uskhaok7l4yx99yosw663k2w8&st=jgpxvlvt&raw=1" class="photo-circle float-left" style="margin-right: 1.5rem; object-fit: cover;" alt="Hannah Hamid profile">
                             <div>
                                 <p style="margin-bottom: 1rem;">Hi, I'm Hannah, and data is my medium. I'm a first-year <span class="highlight-bold">Mathematics and Statistics</span> student, spending my days studying statistical methods and my nights teaching myself <span class="highlight-bold">Python</span>, <span class="highlight-bold">R</span>, and the art of <span class="highlight-bold">vibe coding</span>.</p>
                                 
@@ -1122,14 +1122,14 @@
                             
                             <div style="position: relative; margin: 0.5rem 0;">
                                 <!-- Episode card -->
-                                <div style="background: rgba(42, 107, 124, 0.05); border-radius: 12px; padding: 1.2rem; border: 1px solid rgba(42, 107, 124, 0.2); position: relative;" id="episodeCard">
-                                    <!-- Yellow badge (only visible on episode 1) - positioned inside card -->
+                                <div style="background: rgba(42, 107, 124, 0.05); border-radius: 12px; padding: 1.2rem; border: 1px solid rgba(42, 107, 124, 0.2); position: relative; transition: all 0.3s ease;" id="episodeCard">
+                                    <!-- Yellow badge (only visible on episode 1) -->
                                     <div id="currentBadge" style="position: absolute; top: 10px; left: 15px; background: rgba(255, 215, 0, 0.15); color: #8B6B2A; padding: 0.15rem 0.7rem; border-radius: 20px; font-size: 0.65rem; font-weight: 700; border: 1px solid rgba(255, 215, 0, 0.3); display: flex; align-items: center; text-transform: uppercase; letter-spacing: 0.5px; z-index: 5;">✨ CURRENTLY LISTENING</div>
                                     
-                                    <div style="font-weight: 600; font-size: 0.95rem; margin: ${currentEpisode === 0 ? '1.8rem' : '0'} 0 0.25rem 0;" id="episodeTitleContainer">
+                                    <div style="font-weight: 600; font-size: 0.95rem; transition: margin 0.3s ease;" id="episodeTitleContainer">
                                         <a href="#" id="episodeLink" target="_blank" style="color: #0A192F; text-decoration: none;">Detecting Cheating in Chess</a>
                                     </div>
-                                    <div style="font-size: 0.7rem; color: #6c757d;" id="episodeDate">May 2015 · 44 min</div>
+                                    <div style="font-size: 0.7rem; color: #6c757d; transition: margin 0.3s ease;" id="episodeDate">May 2015 · 44 min</div>
                                 </div>
                             </div>
                             
@@ -1447,17 +1447,30 @@
         const counter = document.getElementById('episodeCounter');
         const badge = document.getElementById('currentBadge');
         const card = document.getElementById('episodeCard');
-        if (!link || !date || !counter || !badge || !card) return;
+        const titleContainer = document.getElementById('episodeTitleContainer');
+        if (!link || !date || !counter || !badge || !card || !titleContainer) return;
+        
         link.innerText = episodes[currentEpisode].title;
         link.href = episodes[currentEpisode].link;
         date.innerText = episodes[currentEpisode].date;
         counter.innerText = `${currentEpisode + 1}/4`;
-        badge.style.display = currentEpisode === 0 ? 'flex' : 'none';
-        card.style.background = currentEpisode === 0 ? 'rgba(255, 215, 0, 0.05)' : 'rgba(42, 107, 124, 0.05)';
+        
+        if (currentEpisode === 0) {
+            badge.style.display = 'flex';
+            card.style.background = 'rgba(255, 215, 0, 0.05)';
+            card.style.border = '1px solid rgba(255, 215, 0, 0.3)';
+            card.style.padding = '1.2rem 1.2rem 1.2rem 1.2rem';
+            titleContainer.style.marginTop = '1.5rem';
+        } else {
+            badge.style.display = 'none';
+            card.style.background = 'rgba(42, 107, 124, 0.05)';
+            card.style.border = '1px solid rgba(42, 107, 124, 0.2)';
+            card.style.padding = '1.2rem';
+            titleContainer.style.marginTop = '0';
+        }
     }
     function nextEpisode() { currentEpisode = (currentEpisode + 1) % 4; updateEpisode(); }
     function prevEpisode() { currentEpisode = (currentEpisode - 1 + 4) % 4; updateEpisode(); }
-
     // ===== DATA POINT GENERATOR =====
     const dataPoints = [
         "🎓 I scored 91% in my Probability & Statistics module – confidence intervals are genuinely my thing.",
