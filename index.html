@@ -934,12 +934,11 @@
                 <a href="#contact" class="nav-link">Contact</a>
             </div>
         </div>
-        
         <!-- Home Section -->
         <section id="home" class="card">
             <div class="card-content">
                 <div style="display: flex; align-items: flex-start; gap: 2rem; flex-wrap: wrap;">
-                    <div style="flex: 2; min-width: 300px;">
+                    <div style="flex: 1; min-width: 300px;">
                         <div class="name-with-h">
                             <span class="h-squared">H²</span>
                             <h1>HANNAH HAMID</h1>
@@ -961,18 +960,19 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Status banners moved to top right -->
-                    <div class="top-status-container" style="flex: 1; min-width: 200px;">
-                        <div class="top-status-banner green">
-                            ⚡ Open for internships & experience
-                        </div>
-                        <div class="top-status-banner orange">
-                            ⚡ Open for placements 2027-2028
-                        </div>
+                </div>
+                
+                <!-- Status banners - moved back below intro, above code cell -->
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 0.75rem; margin: 1rem 0 1.5rem 0;">
+                    <div class="status-banner green" style="width: fit-content; margin: 0 auto;">
+                        CURRENTLY⚡ Open for internships and work experience
+                    </div>
+                    <div class="status-banner orange" style="width: fit-content; margin: 0 auto;">
+                        2027-2028⚡Open for placements
                     </div>
                 </div>
                 
+                <!-- Code cell PS note -->
                 <div class="code-cell">
                     <div class="code-prompt">
                         <span>>>> </span> print("This website was")
@@ -989,6 +989,7 @@
                     </div>
                 </div>
                 
+                <!-- KPI Dashboard -->
                 <h3 style="margin: 2rem 0 1rem;">⌨️ CURRENT SNAPSHOT</h3>
                 <div class="kpi-grid">
                     <div class="kpi-card">
@@ -1009,8 +1010,7 @@
                     </div>
                 </div>
             </div>
-        </section>
-        
+        </section>        
         <!-- ===== PROJECTS SECTION ===== -->
         <section id="projects" class="card">
             <div class="card-content">
