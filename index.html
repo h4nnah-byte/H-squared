@@ -900,27 +900,6 @@
                 font-size: 0.85rem;
             }
         }
-        /* Button hover styles - only apply to enabled buttons */
-        button:enabled:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-
-        #addCoffeeBtn:enabled:hover, #writeCodeBtn:enabled:hover {
-            background: rgba(255, 215, 0, 0.3) !important;
-        }
-
-        /* Disabled button styles */
-        button:disabled {
-            cursor: not-allowed;
-            opacity: 0.9;
-        }
-        
-        #addCoffeeBtn:disabled, #writeCodeBtn:disabled {
-            background: #e0e0e0 !important;
-            border-color: #ffd700 !important;
-            color: #999999 !important;
-        }
     </style>
 </head>
 <body>
@@ -1425,9 +1404,13 @@
                             </div>
                             
                             <div style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; margin: 1rem 0;">
-                                <button id="addCoffeeBtn" onclick="addCoffee()" style="background: rgba(255, 215, 0, 0.2); color: #8B6B2A; padding: 0.8rem 1.5rem; border-radius: 40px; font-size: 0.9rem; font-weight: 600; border: 2px solid rgba(255, 215, 0, 0.4); cursor: pointer; width: 140px; transition: all 0.3s ease;">➕ ADD COFFEE</button>
+                                <button id="addCoffeeBtn" onclick="addCoffee()" style="background: rgba(255, 215, 0, 0.2); color: #8B6B2A; padding: 0.8rem 1.5rem; border-radius: 40px; font-size: 0.9rem; font-weight: 600; border: 2px solid rgba(255, 215, 0, 0.4); cursor: pointer; width: 140px; transition: all 0.3s ease;" 
+                                onmouseover="this.style.backgroundColor='rgba(255, 215, 0, 0.3)'" 
+                                onmouseout="this.style.backgroundColor=this.disabled ? '#e0e0e0' : 'rgba(255, 215, 0, 0.2)'">➕ ADD COFFEE</button>
                                 
-                                <button id="writeCodeBtn" onclick="writeCode()" style="background: rgba(255, 215, 0, 0.2); color: #8B6B2A; padding: 0.8rem 1.5rem; border-radius: 40px; font-size: 0.9rem; font-weight: 600; border: 2px solid rgba(255, 215, 0, 0.4); cursor: pointer; width: 140px; transition: all 0.3s ease;" disabled>💻 WRITE CODE</button>
+                                <button id="writeCodeBtn" onclick="writeCode()" style="background: rgba(255, 215, 0, 0.2); color: #8B6B2A; padding: 0.8rem 1.5rem; border-radius: 40px; font-size: 0.9rem; font-weight: 600; border: 2px solid rgba(255, 215, 0, 0.4); cursor: pointer; width: 140px; transition: all 0.3s ease;" 
+                                onmouseover="this.style.backgroundColor='rgba(255, 215, 0, 0.3)'" 
+                                onmouseout="this.style.backgroundColor=this.disabled ? '#e0e0e0' : 'rgba(255, 215, 0, 0.2)'" disabled>💻 WRITE CODE</button>
                             </div>
                             
                             <div style="background: rgba(42, 107, 124, 0.05); padding: 1rem; border-radius: 16px; font-size: 0.8rem;">
@@ -1527,71 +1510,28 @@
         80: "> The vibes are vibing",
         100: "> 95% confidence interval: [works, doesn't work]"
     };
-    
     function updateCoffee() {
         const p = document.getElementById('coffeePercent'); if(p) p.innerText = powerLevel+'%';
         const m = document.getElementById('coffeeMeter'); if(m) m.style.width = powerLevel+'%';
         const c = document.getElementById('coffeeCount'); if(c) c.innerText = coffeeCount;
         const l = document.getElementById('codeCount'); if(l) l.innerText = codeCount;
         const msg = document.getElementById('message'); if(msg) msg.innerText = messages[powerLevel] || "> " + ["In the zone ⚡","Debug mode: ON 🐛","10/10 would vibe code again ✨","This is fine 🔥","Vibe level: immaculate ✨"][Math.floor(Math.random()*5)];
-        
-        const add = document.getElementById('addCoffeeBtn');
-        const write = document.getElementById('writeCodeBtn');
+        const add = document.getElementById('addCoffeeBtn'); const write = document.getElementById('writeCodeBtn');
         const phase = document.getElementById('phaseIndicator');
-        
-        // Helper function to set button styles
-        function setButtonStyle(button, isEnabled) {
-            if (!button) return;
-            if (isEnabled) {
-                button.disabled = false;
-                button.style.backgroundColor = 'rgba(255, 215, 0, 0.2)';
-                button.style.borderColor = 'rgba(255, 215, 0, 0.4)';
-                button.style.color = '#8B6B2A';
-                button.style.cursor = 'pointer';
-                // Remove any inline hover handlers - we'll use CSS for hover
-                button.onmouseover = null;
-                button.onmouseout = null;
-            } else {
-                button.disabled = true;
-                button.style.backgroundColor = '#e0e0e0';
-                button.style.borderColor = '#ffd700'; // Yellow border when disabled
-                button.style.color = '#999999';
-                button.style.cursor = 'not-allowed';
-                button.onmouseover = null;
-                button.onmouseout = null;
-            }
-        }
-        
         if (powerLevel >= 100) {
-            setButtonStyle(add, false);
-            setButtonStyle(write, true);
-            isIncreasing = false;
+            if(add) add.disabled = true; if(write) write.disabled = false; isIncreasing = false;
             if(phase) phase.innerText = "💻 Code phase: Drain energy to 0%";
         } else if (powerLevel <= 0) {
-            setButtonStyle(add, true);
-            setButtonStyle(write, false);
-            isIncreasing = true;
+            if(add) add.disabled = false; if(write) write.disabled = true; isIncreasing = true;
             if(phase) phase.innerText = "☕ Coffee phase: Build energy to 100%";
         } else {
-            setButtonStyle(add, isIncreasing);
-            setButtonStyle(write, !isIncreasing);
+            if(add) add.disabled = !isIncreasing; if(write) write.disabled = isIncreasing;
         }
     }
-    
-    function addCoffee() { 
-        if (powerLevel < 100 && isIncreasing) { 
-            coffeeCount++; 
-            powerLevel = Math.min(100, powerLevel+25); 
-            updateCoffee(); 
-        } 
-    }
-    
-    function writeCode() { 
-        if (powerLevel > 0 && !isIncreasing) { 
-            codeCount += 10; 
-            powerLevel = Math.max(0, powerLevel-20); 
-            updateCoffee(); 
-        } 
-    }
+    function addCoffee() { if (powerLevel < 100 && isIncreasing) { coffeeCount++; powerLevel = Math.min(100, powerLevel+25); updateCoffee(); } }
+    function writeCode() { if (powerLevel > 0 && !isIncreasing) { codeCount += 10; powerLevel = Math.max(0, powerLevel-20); updateCoffee(); } }
+
+    window.addEventListener('load', function() { updateEpisode(); updateCoffee(); });
+    </script>
 </body>
 </html>
