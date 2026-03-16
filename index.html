@@ -727,16 +727,14 @@
             display: inline-block;
             line-height: 1.2;
         }
-        
         .bottom-name {
             font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             font-weight: 700;
             color: #3a4e7c;
             letter-spacing: -0.5px;
             text-align: center;
             line-height: 1.2;
-            white-space: nowrap;
         }
         
         /* Top right status banners */
@@ -1375,13 +1373,13 @@
                             </div>
                         </div>
                         
-                        <!-- Logo Card (now on left, below contact cards) -->
-                        <div style="display: flex; justify-content: center; margin-top: 1rem;">
-                            <div class="bottom-logo-card" style="max-width: 300px;">
-                                <div class="bottom-logo-content">
+                        <!-- Logo Card (now wider to match contact cards) -->
+                        <div style="display: flex; justify-content: center; margin-top: 1rem; width: 100%;">
+                            <div class="bottom-logo-card" style="max-width: 100%; width: 100%;">
+                                <div class="bottom-logo-content" style="padding: 2rem 1.5rem;">
                                     <div class="bottom-logo">
-                                        <span class="bottom-h">H²</span>
-                                        <span class="bottom-name">HANNAH HAMID</span>
+                                        <span class="bottom-h" style="font-size: 3.5rem;">H²</span>
+                                        <span class="bottom-name" style="font-size: 2.5rem; letter-spacing: 1px;">HANNAH HAMID</span>
                                     </div>
                                 </div>
                             </div>
@@ -1406,8 +1404,13 @@
                             </div>
                             
                             <div style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; margin: 1rem 0;">
-                                <button id="addCoffeeBtn" onclick="addCoffee()" style="background: rgba(255, 215, 0, 0.2); color: #8B6B2A; padding: 0.8rem 1.5rem; border-radius: 40px; font-size: 0.9rem; font-weight: 600; border: 2px solid rgba(255, 215, 0, 0.4); cursor: pointer; width: 140px;">➕ ADD COFFEE</button>
-                                <button id="writeCodeBtn" onclick="writeCode()" style="background: rgba(255, 215, 0, 0.2); color: #8B6B2A; padding: 0.8rem 1.5rem; border-radius: 40px; font-size: 0.9rem; font-weight: 600; border: 2px solid rgba(255, 215, 0, 0.4); cursor: pointer; width: 140px;" disabled>💻 WRITE CODE</button>
+                                <button id="addCoffeeBtn" onclick="addCoffee()" style="background: rgba(255, 215, 0, 0.2); color: #8B6B2A; padding: 0.8rem 1.5rem; border-radius: 40px; font-size: 0.9rem; font-weight: 600; border: 2px solid rgba(255, 215, 0, 0.4); cursor: pointer; width: 140px; transition: all 0.3s ease;" 
+                                onmouseover="this.style.backgroundColor='rgba(255, 215, 0, 0.3)'" 
+                                onmouseout="this.style.backgroundColor=this.disabled ? '#e0e0e0' : 'rgba(255, 215, 0, 0.2)'">➕ ADD COFFEE</button>
+                                
+                                <button id="writeCodeBtn" onclick="writeCode()" style="background: rgba(255, 215, 0, 0.2); color: #8B6B2A; padding: 0.8rem 1.5rem; border-radius: 40px; font-size: 0.9rem; font-weight: 600; border: 2px solid rgba(255, 215, 0, 0.4); cursor: pointer; width: 140px; transition: all 0.3s ease;" 
+                                onmouseover="this.style.backgroundColor='rgba(255, 215, 0, 0.3)'" 
+                                onmouseout="this.style.backgroundColor=this.disabled ? '#e0e0e0' : 'rgba(255, 215, 0, 0.2)'" disabled>💻 WRITE CODE</button>
                             </div>
                             
                             <div style="background: rgba(42, 107, 124, 0.05); padding: 1rem; border-radius: 16px; font-size: 0.8rem;">
