@@ -898,72 +898,84 @@
             </div>
         </div>
         
-        <!-- Home Section -->
-        <section id="home" class="card">
-            <div class="card-content">
-                <div style="display: flex; align-items: flex-start; gap: 2rem; flex-wrap: wrap;">
-                    <div style="flex: 1; min-width: 250px;">
-                        <div class="name-with-h">
-                            <span class="h-squared">H²</span>
-                            <h1>HANNAH HAMID</h1>
-                        </div>
+<!-- ===== HOME SECTION ===== -->
+<section id="home" class="card">
+    <div class="card-content">
+        <!-- Hero with photo and intro (unchanged) -->
+        <div style="display: flex; align-items: flex-start; gap: 2rem; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 300px;">
+                <div class="name-with-h">
+                    <span class="h-squared">H²</span>
+                    <h1>HANNAH HAMID</h1>
+                </div>
+                
+                <div style="font-size: 1.1rem; color: #2A6B7C; margin: 1rem 0;">
+                    Mathematics & Statistics BSc · QMUL · 2025-2029
+                </div>
+                <div style="margin: 1.5rem 0;" class="clearfix">
+                    <img src="https://www.dropbox.com/scl/fi/zz36l7bkn2xhjpldntzom/IMG_4435.jpeg?rlkey=2hhg85azy2m7bn21pd9crzye0&st=kdkc164a&raw=1" class="photo-circle float-left" style="margin-right: 1.5rem; object-fit: cover;" alt="Hannah Hamid profile">
+                    <div>
+                        <p style="margin-bottom: 1rem;">Hi, I'm Hannah, and data is my medium. I'm a first-year <span class="highlight-bold">Mathematics and Statistics</span> student, spending my days studying statistical methods and my nights teaching myself <span class="highlight-bold">Python</span>, <span class="highlight-bold">R</span>, and the art of <span class="highlight-bold">vibe coding</span>.</p>
                         
-                        <div style="font-size: 1.1rem; color: #2A6B7C; margin: 1rem 0;">
-                            Mathematics & Statistics BSc · QMUL · 2025-2029
-                        </div>
-                        <div style="margin: 1.5rem 0;" class="clearfix">
-                            <img src="https://www.dropbox.com/scl/fi/zz36l7bkn2xhjpldntzom/IMG_4435.jpeg?rlkey=2hhg85azy2m7bn21pd9crzye0&st=kdkc164a&raw=1" class="photo-circle float-left" style="margin-right: 1.5rem; object-fit: cover;" alt="Hannah Hamid profile">
-                            <div>
-                                <p style="margin-bottom: 1rem;">Hi, I'm Hannah, and data is my medium. I'm a first-year <span class="highlight-bold">Mathematics and Statistics</span> student, spending my days studying statistical methods and my nights teaching myself <span class="highlight-bold">Python</span>, <span class="highlight-bold">R</span>, and the art of <span class="highlight-bold">vibe coding</span>.</p>
-                                
-                                <p style="margin-bottom: 1rem;">Recently, I have been exploring how to use AI responsibly to uncover insights that help people make better decisions. Data science, to me, is about finding the story hidden between the numbers.</p>
-                                
-                                <p style="margin-bottom: 1rem;">Away from the code, I have a love for teaching GCSE Mathematics, which I have been doing since I finished the exams myself. Recently, I worked hard with a student to increase their grade from a Grade 2 to a 5 in Foundation. Teaching has taught me that when someone starts enjoying the process, the progress follows naturally.</p>
-                                
-                                <p><strong>Take a look around - consider this my way of teaching you what I've been learning.</strong></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="code-cell">
-                    <div class="code-prompt">
-                        <span>>>> </span> print("This website was")
-                    </div>
-                    <div class="code-prompt">
-                        <span>... </span> print("vibe coded entirely by me!")
-                    </div>
-                    <div class="code-output">
-                        This website was<br>
-                        vibe coded entirely by me!
-                    </div>
-                    <div style="margin-top: 0.75rem; font-size: 0.8rem; color: #4A5A6A;">
-                        # built with AI assistance, designed and directed by me
-                    </div>
-                </div>
-                
-                <h3 style="margin: 2rem 0 1rem;">⌨️ CURRENT SNAPSHOT</h3>
-                <div class="kpi-grid">
-                    <div class="kpi-card">
-                        <div class="kpi-value">91%</div>
-                        <div class="kpi-label">in Probability & Statistics</div>
-                    </div>
-                    <div class="kpi-card">
-                        <div class="kpi-value">A*</div>
-                        <div class="kpi-label">in A-Level Mathematics</div>
-                    </div>
-                    <div class="kpi-card">
-                        <div class="kpi-value">2</div>
-                        <div class="kpi-label">ACTIVE PROJECTS</div>
-                    </div>
-                    <div class="kpi-card">
-                        <div class="kpi-value">'27-28</div>
-                        <div class="kpi-label">PLACEMENT YEAR</div>
+                        <p style="margin-bottom: 1rem;">Recently, I have been exploring how to use AI responsibly to uncover insights that help people make better decisions. Data science, to me, is about finding the story hidden between the numbers.</p>
+                        
+                        <p style="margin-bottom: 1rem;">Away from the code, I have a love for teaching GCSE Mathematics, which I have been doing since I finished the exams myself. Recently, I worked hard with a student to increase their grade from a Grade 2 to a 5 in Foundation. Teaching has taught me that when someone starts enjoying the process, the progress follows naturally.</p>
+                        
+                        <p><strong>Take a look around - consider this my way of teaching you what I've been learning.</strong></p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
         
+        <!-- Status banners moved here, centered, below intro but above code cell -->
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 0.75rem; margin: 2rem 0 1.5rem 0;">
+            <div class="status-banner green" style="width: fit-content; margin: 0 auto;">
+                ⚡ Open for internships and work experience now
+            </div>
+            <div class="status-banner orange" style="width: fit-content; margin: 0 auto;">
+                ⚡ Open for placements 2027-2028
+            </div>
+        </div>
+        
+        <!-- Code cell PS note (moved down) -->
+        <div class="code-cell">
+            <div class="code-prompt">
+                <span>>>> </span> print("This website was")
+            </div>
+            <div class="code-prompt">
+                <span>... </span> print("vibe coded entirely by me!")
+            </div>
+            <div class="code-output">
+                This website was<br>
+                vibe coded entirely by me!
+            </div>
+            <div style="margin-top: 0.75rem; font-size: 0.8rem; color: #4A5A6A;">
+                # built with AI assistance, designed and directed by me
+            </div>
+        </div>
+        
+        <!-- KPI Dashboard (unchanged) -->
+        <h3 style="margin: 2rem 0 1rem;">⌨️ CURRENT SNAPSHOT</h3>
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-value">91%</div>
+                <div class="kpi-label">in Probability & Statistics</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-value">A*</div>
+                <div class="kpi-label">in A-Level Mathematics</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-value">2</div>
+                <div class="kpi-label">ACTIVE PROJECTS</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-value">'27-28</div>
+                <div class="kpi-label">PLACEMENT YEAR</div>
+            </div>
+        </div>
+    </div>
+</section>
         <!-- ===== PROJECTS SECTION ===== -->
         <section id="projects" class="card">
             <div class="card-content">
@@ -1244,60 +1256,44 @@
             </div>
         </section>
         
-        <!-- Contact Section with Logo Card -->
-        <section id="contact" class="card">
-            <div class="card-content">
-                <h2><span class="section-number">04</span> CONTACT</h2>
-                
-                <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
-                    <!-- Left side: Contact cards + status banners -->
-                    <div style="flex: 1.5; min-width: 300px;">
-                        <!-- Contact cards -->
-                        <div class="contact-grid" style="width: 100%; margin-bottom: 1.5rem;">
-                            <div class="contact-card">
-                                <div class="contact-icon">📧</div>
-                                <div class="contact-title">Email</div>
-                                <div class="contact-detail">hannahhamid631@gmail.com</div>
-                            </div>
-                            
-                            <div class="contact-card">
-                                <div class="contact-icon">🔗</div>
-                                <div class="contact-title">LinkedIn</div>
-                                <div class="contact-detail"><a href="https://www.linkedin.com/in/hannahhamid/" target="_blank">linkedin.com/in/hannahhamid</a></div>
-                            </div>
-                            
-                            <div class="contact-card">
-                                <div class="contact-icon">🐙</div>
-                                <div class="contact-title">GitHub</div>
-                                <div class="contact-detail"><a href="https://github.com/h4nnah-byte" target="_blank">github.com/h4nnah-byte</a></div>
-                            </div>
-                        </div>
-                        
-                        <!-- Status banners stacked on left -->
-                        <div class="status-banner green">
-                            Open for internships and work experience now
-                        </div>
-                        
-                        <div class="status-banner orange">
-                            Open for placements 2027-2028
-                        </div>
+<!-- ===== CONTACT SECTION with Logo Card ===== -->
+<section id="contact" class="card">
+    <div class="card-content">
+        <h2><span class="section-number">04</span> CONTACT</h2>
+        
+        <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+            <!-- Left side: Contact cards (email removed) -->
+            <div style="flex: 1.5; min-width: 300px;">
+                <!-- Contact cards - now only LinkedIn and GitHub -->
+                <div class="contact-grid" style="width: 100%; margin-bottom: 1.5rem; grid-template-columns: repeat(2, 1fr);">
+                    <div class="contact-card">
+                        <div class="contact-icon">🔗</div>
+                        <div class="contact-title">LinkedIn</div>
+                        <div class="contact-detail"><a href="https://www.linkedin.com/in/hannahhamid/" target="_blank">linkedin.com/in/hannahhamid</a></div>
                     </div>
                     
-                    <!-- Right side: Your logo card -->
-                    <div style="flex: 1; min-width: 300px; display: flex; justify-content: center; align-items: center;">
-                        <div class="bottom-logo-card">
-                            <div class="bottom-logo-content">
-                                <div class="bottom-logo">
-                                    <span class="bottom-h">H²</span>
-                                    <span class="bottom-name">HANNAH HAMID</span>
-                                </div>
-                            </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">🐙</div>
+                        <div class="contact-title">GitHub</div>
+                        <div class="contact-detail"><a href="https://github.com/h4nnah-byte" target="_blank">github.com/h4nnah-byte</a></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right side: Your logo card -->
+            <div style="flex: 1; min-width: 300px; display: flex; justify-content: center; align-items: center;">
+                <div class="bottom-logo-card">
+                    <div class="bottom-logo-content">
+                        <div class="bottom-logo">
+                            <span class="bottom-h">H²</span>
+                            <span class="bottom-name">HANNAH HAMID</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-        
+        </div>
+    </div>
+</section>
         <!-- Footer -->
         <div class="footer-note">
             🌱 Last updated: March 2026 · Designed and directed by Hannah, built with AI assistance
