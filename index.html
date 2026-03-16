@@ -691,14 +691,13 @@
             border-radius: 28px;
             padding: 2px;
             width: 100%;
-            max-width: 400px;
         }
         
         .bottom-logo-content {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(4px);
             border-radius: 26px;
-            padding: 1.8rem 1.5rem;
+            padding: 2rem 1.5rem;
             border: 1px solid rgba(255, 255, 255, 0.4);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
             display: flex;
@@ -716,7 +715,7 @@
         
         .bottom-h {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 700;
             letter-spacing: -2px;
             color: #3a4e7c;
@@ -727,6 +726,7 @@
             display: inline-block;
             line-height: 1.2;
         }
+        
         .bottom-name {
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
@@ -765,6 +765,33 @@
             background: rgba(244, 162, 97, 0.15);
             border: 1px solid rgba(244, 162, 97, 0.3);
             color: #bc6c25;
+        }
+        
+        /* Button styles */
+        button {
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        button:enabled {
+            cursor: pointer;
+        }
+        
+        button:enabled:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        #addCoffeeBtn:enabled:hover, #writeCodeBtn:enabled:hover {
+            background: rgba(255, 215, 0, 0.3) !important;
+        }
+        
+        button:disabled {
+            cursor: not-allowed;
+            opacity: 0.8;
+            background: #e0e0e0 !important;
+            border-color: #ffd700 !important;
+            color: #999999 !important;
         }
         
         /* Responsive Design */
@@ -932,6 +959,7 @@
                 <a href="#contact" class="nav-link">Contact</a>
             </div>
         </div>
+        
         <!-- Home Section -->
         <section id="home" class="card">
             <div class="card-content">
@@ -952,7 +980,7 @@
                                 
                                 <p style="margin-bottom: 1rem;">Recently, I have been exploring how to use AI responsibly to uncover insights that help people make better decisions. Data science, to me, is about finding the story hidden between the numbers.</p>
                                 
-                                <p style="margin-bottom: 1rem;">Away from the code, I have a love for teaching GCSE Mathematics, which I have been doing since I finished the exams myself. Recently, I worked hard with a student to increase their grade from a Grade 2 to a 5 in Foundation. Teaching has taught me that when someone starts enjoying the process, progress follows naturally.</p>
+                                <p style="margin-bottom: 1rem;">Away from the code, I have a love for teaching GCSE Mathematics, which I have been doing since I finished the exams myself. Recently, I worked hard with a student to increase their grade from a Grade 2 to a 5 in Foundation. Teaching has taught me that when someone starts enjoying the process, the progress follows naturally.</p>
                                 
                                 <p><strong>Take a look around - consider this my way of teaching you what I've been learning.</strong></p>
                             </div>
@@ -960,7 +988,7 @@
                     </div>
                 </div>
                 
-                <!-- Status banners - moved back below intro, above code cell -->
+                <!-- Status banners -->
                 <div style="display: flex; flex-direction: column; align-items: center; gap: 0.75rem; margin: 1rem 0 1.5rem 0;">
                     <div class="status-banner green" style="width: fit-content; margin: 0 auto;">
                         CURRENTLY⚡ Open for internships and work experience
@@ -1008,7 +1036,8 @@
                     </div>
                 </div>
             </div>
-        </section>        
+        </section>
+        
         <!-- ===== PROJECTS SECTION ===== -->
         <section id="projects" class="card">
             <div class="card-content">
@@ -1138,6 +1167,7 @@
                                 <div onclick="nextEpisode()" style="background: rgba(42, 107, 124, 0.1); border: 1px solid rgba(42, 107, 124, 0.2); color: #2A6B7C; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; cursor: pointer; transition: all 0.2s;">→</div>
                             </div>
                         </div>
+                        
                         <!-- Currently Learning -->
                         <div class="inner-card" style="margin-bottom: 1.5rem;">
                             <h3>🧠 CURRENTLY LEARNING</h3>
@@ -1373,7 +1403,7 @@
                             </div>
                         </div>
                         
-                        <!-- Logo Card (now wider to match contact cards) -->
+                        <!-- Logo Card (wider to match contact cards) -->
                         <div style="display: flex; justify-content: center; margin-top: 1rem; width: 100%;">
                             <div class="bottom-logo-card" style="max-width: 100%; width: 100%;">
                                 <div class="bottom-logo-content" style="padding: 2rem 1.5rem;">
@@ -1404,13 +1434,8 @@
                             </div>
                             
                             <div style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; margin: 1rem 0;">
-                                <button id="addCoffeeBtn" onclick="addCoffee()" style="background: rgba(255, 215, 0, 0.2); color: #8B6B2A; padding: 0.8rem 1.5rem; border-radius: 40px; font-size: 0.9rem; font-weight: 600; border: 2px solid rgba(255, 215, 0, 0.4); cursor: pointer; width: 140px; transition: all 0.3s ease;" 
-                                onmouseover="this.style.backgroundColor='rgba(255, 215, 0, 0.3)'" 
-                                onmouseout="this.style.backgroundColor=this.disabled ? '#e0e0e0' : 'rgba(255, 215, 0, 0.2)'">➕ ADD COFFEE</button>
-                                
-                                <button id="writeCodeBtn" onclick="writeCode()" style="background: rgba(255, 215, 0, 0.2); color: #8B6B2A; padding: 0.8rem 1.5rem; border-radius: 40px; font-size: 0.9rem; font-weight: 600; border: 2px solid rgba(255, 215, 0, 0.4); cursor: pointer; width: 140px; transition: all 0.3s ease;" 
-                                onmouseover="this.style.backgroundColor='rgba(255, 215, 0, 0.3)'" 
-                                onmouseout="this.style.backgroundColor=this.disabled ? '#e0e0e0' : 'rgba(255, 215, 0, 0.2)'" disabled>💻 WRITE CODE</button>
+                                <button id="addCoffeeBtn" onclick="addCoffee()" style="background: rgba(255, 215, 0, 0.2); color: #8B6B2A; padding: 0.8rem 1.5rem; border-radius: 40px; font-size: 0.9rem; font-weight: 600; border: 2px solid rgba(255, 215, 0, 0.4); cursor: pointer; width: 140px;">➕ ADD COFFEE</button>
+                                <button id="writeCodeBtn" onclick="writeCode()" style="background: rgba(255, 215, 0, 0.2); color: #8B6B2A; padding: 0.8rem 1.5rem; border-radius: 40px; font-size: 0.9rem; font-weight: 600; border: 2px solid rgba(255, 215, 0, 0.4); cursor: pointer; width: 140px;" disabled>💻 WRITE CODE</button>
                             </div>
                             
                             <div style="background: rgba(42, 107, 124, 0.05); padding: 1rem; border-radius: 16px; font-size: 0.8rem;">
@@ -1444,6 +1469,7 @@
         { title: "Auditing Algorithms", date: "Oct 2024 · 53 min", link: "https://open.spotify.com/episode/0okKP8a9zjIoHyEl2oehkN?si=b845657e066a48aa" }
     ];
     let currentEpisode = 0;
+    
     function updateEpisode() {
         const link = document.getElementById('episodeLink');
         const date = document.getElementById('episodeDate');
@@ -1451,6 +1477,7 @@
         const badge = document.getElementById('currentBadge');
         const card = document.getElementById('episodeCard');
         const titleContainer = document.getElementById('episodeTitleContainer');
+        
         if (!link || !date || !counter || !badge || !card || !titleContainer) return;
         
         link.innerText = episodes[currentEpisode].title;
@@ -1462,18 +1489,25 @@
             badge.style.display = 'flex';
             card.style.background = 'rgba(255, 215, 0, 0.05)';
             card.style.border = '1px solid rgba(255, 215, 0, 0.3)';
-            card.style.padding = '1.2rem 1.2rem 1.2rem 1.2rem';
             titleContainer.style.marginTop = '1.5rem';
         } else {
             badge.style.display = 'none';
             card.style.background = 'rgba(42, 107, 124, 0.05)';
             card.style.border = '1px solid rgba(42, 107, 124, 0.2)';
-            card.style.padding = '1.2rem';
             titleContainer.style.marginTop = '0';
         }
     }
-    function nextEpisode() { currentEpisode = (currentEpisode + 1) % 4; updateEpisode(); }
-    function prevEpisode() { currentEpisode = (currentEpisode - 1 + 4) % 4; updateEpisode(); }
+    
+    function nextEpisode() { 
+        currentEpisode = (currentEpisode + 1) % 4; 
+        updateEpisode(); 
+    }
+    
+    function prevEpisode() { 
+        currentEpisode = (currentEpisode - 1 + 4) % 4; 
+        updateEpisode(); 
+    }
+
     // ===== DATA POINT GENERATOR =====
     const dataPoints = [
         "🎓 I scored 91% in my Probability & Statistics module – confidence intervals are genuinely my thing.",
@@ -1487,12 +1521,19 @@
         "🤖 For our AI Bias Auditor project, we built and compared 3 machine learning models: Logistic Regression, Random Forest, and Decision Tree – all trained to predict job placements.",
         "📉 Our analysis in the AI Bias Auditor project showed that AI can amplify existing societal disparities – even when the original data is fair."
     ];
+    
     let lastDataIndex = 2;
     const dataPointElement = document.getElementById('dataPoint');
-    if (dataPointElement) { dataPointElement.innerHTML = dataPoints[2]; }
+    if (dataPointElement) { 
+        dataPointElement.innerHTML = dataPoints[2]; 
+    }
+    
     function generateDataPoint() {
         let newIndex;
-        do { newIndex = Math.floor(Math.random() * dataPoints.length); } while (newIndex === lastDataIndex);
+        do { 
+            newIndex = Math.floor(Math.random() * dataPoints.length); 
+        } while (newIndex === lastDataIndex);
+        
         lastDataIndex = newIndex;
         const el = document.getElementById('dataPoint');
         if (el) el.innerHTML = dataPoints[lastDataIndex];
@@ -1500,6 +1541,7 @@
 
     // ===== COFFEE POWER METER =====
     let coffeeCount = 0, codeCount = 0, powerLevel = 0, isIncreasing = true;
+    
     const messages = {
         0: "> Help I'm stuck in an infinite loop 🔄",
         20: "> Coffee levels: Critical ☠️",
@@ -1510,28 +1552,81 @@
         80: "> The vibes are vibing",
         100: "> 95% confidence interval: [works, doesn't work]"
     };
-    function updateCoffee() {
-        const p = document.getElementById('coffeePercent'); if(p) p.innerText = powerLevel+'%';
-        const m = document.getElementById('coffeeMeter'); if(m) m.style.width = powerLevel+'%';
-        const c = document.getElementById('coffeeCount'); if(c) c.innerText = coffeeCount;
-        const l = document.getElementById('codeCount'); if(l) l.innerText = codeCount;
-        const msg = document.getElementById('message'); if(msg) msg.innerText = messages[powerLevel] || "> " + ["In the zone ⚡","Debug mode: ON 🐛","10/10 would vibe code again ✨","This is fine 🔥","Vibe level: immaculate ✨"][Math.floor(Math.random()*5)];
-        const add = document.getElementById('addCoffeeBtn'); const write = document.getElementById('writeCodeBtn');
-        const phase = document.getElementById('phaseIndicator');
-        if (powerLevel >= 100) {
-            if(add) add.disabled = true; if(write) write.disabled = false; isIncreasing = false;
-            if(phase) phase.innerText = "💻 Code phase: Drain energy to 0%";
-        } else if (powerLevel <= 0) {
-            if(add) add.disabled = false; if(write) write.disabled = true; isIncreasing = true;
-            if(phase) phase.innerText = "☕ Coffee phase: Build energy to 100%";
+    
+    function setButtonStyle(button, isEnabled) {
+        if (!button) return;
+        button.disabled = !isEnabled;
+        
+        if (isEnabled) {
+            button.style.backgroundColor = 'rgba(255, 215, 0, 0.2)';
+            button.style.borderColor = 'rgba(255, 215, 0, 0.4)';
+            button.style.color = '#8B6B2A';
+            button.style.cursor = 'pointer';
         } else {
-            if(add) add.disabled = !isIncreasing; if(write) write.disabled = isIncreasing;
+            button.style.backgroundColor = '#e0e0e0';
+            button.style.borderColor = '#ffd700';
+            button.style.color = '#999999';
+            button.style.cursor = 'not-allowed';
         }
     }
-    function addCoffee() { if (powerLevel < 100 && isIncreasing) { coffeeCount++; powerLevel = Math.min(100, powerLevel+25); updateCoffee(); } }
-    function writeCode() { if (powerLevel > 0 && !isIncreasing) { codeCount += 10; powerLevel = Math.max(0, powerLevel-20); updateCoffee(); } }
+    
+    function updateCoffee() {
+        const p = document.getElementById('coffeePercent'); 
+        if(p) p.innerText = powerLevel + '%';
+        
+        const m = document.getElementById('coffeeMeter'); 
+        if(m) m.style.width = powerLevel + '%';
+        
+        const c = document.getElementById('coffeeCount'); 
+        if(c) c.innerText = coffeeCount;
+        
+        const l = document.getElementById('codeCount'); 
+        if(l) l.innerText = codeCount;
+        
+        const msg = document.getElementById('message'); 
+        if(msg) msg.innerText = messages[powerLevel] || "> " + ["In the zone ⚡","Debug mode: ON 🐛","10/10 would vibe code again ✨","This is fine 🔥","Vibe level: immaculate ✨"][Math.floor(Math.random()*5)];
+        
+        const add = document.getElementById('addCoffeeBtn');
+        const write = document.getElementById('writeCodeBtn');
+        const phase = document.getElementById('phaseIndicator');
+        
+        if (powerLevel >= 100) {
+            setButtonStyle(add, false);
+            setButtonStyle(write, true);
+            isIncreasing = false;
+            if(phase) phase.innerText = "💻 Code phase: Drain energy to 0%";
+        } else if (powerLevel <= 0) {
+            setButtonStyle(add, true);
+            setButtonStyle(write, false);
+            isIncreasing = true;
+            if(phase) phase.innerText = "☕ Coffee phase: Build energy to 100%";
+        } else {
+            setButtonStyle(add, isIncreasing);
+            setButtonStyle(write, !isIncreasing);
+        }
+    }
+    
+    function addCoffee() { 
+        if (powerLevel < 100 && isIncreasing) { 
+            coffeeCount++; 
+            powerLevel = Math.min(100, powerLevel + 25); 
+            updateCoffee(); 
+        } 
+    }
+    
+    function writeCode() { 
+        if (powerLevel > 0 && !isIncreasing) { 
+            codeCount += 10; 
+            powerLevel = Math.max(0, powerLevel - 20); 
+            updateCoffee(); 
+        } 
+    }
 
-    window.addEventListener('load', function() { updateEpisode(); updateCoffee(); });
+    // Initialize on load
+    window.addEventListener('load', function() { 
+        updateEpisode(); 
+        updateCoffee(); 
+    });
     </script>
 </body>
 </html>
