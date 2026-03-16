@@ -1114,18 +1114,19 @@
                     <div>
                         <!-- RECENTLY LISTENING - Interactive Swiper -->
                         <div class="inner-card" style="margin-bottom: 1.5rem;">
-                            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
-                                <h3 style="margin: 0;">🎧 RECENTLY LISTENING</h3>
-                                <a href="https://dataskeptic.com/podcast" target="_blank" style="color: #2A6B7C; text-decoration: none; font-size: 0.8rem;">📻 Data Skeptic</a>
+                            <!-- Title and podcast link on separate lines -->
+                            <h3 style="margin: 0 0 0.25rem 0;">🎧 RECENTLY LISTENING</h3>
+                            <div style="margin-bottom: 1rem;">
+                                <a href="https://dataskeptic.com/podcast" target="_blank" style="color: #2A6B7C; text-decoration: none; font-size: 0.9rem; font-weight: 500;">📻 Data Skeptic Podcast</a>
                             </div>
                             
-                            <div style="position: relative; margin: 1rem 0;">
-                                <!-- Episode card with floating badge (positioned lower) -->
+                            <div style="position: relative; margin: 0.5rem 0;">
+                                <!-- Episode card -->
                                 <div style="background: rgba(42, 107, 124, 0.05); border-radius: 12px; padding: 1.2rem; border: 1px solid rgba(42, 107, 124, 0.2); position: relative;" id="episodeCard">
-                                    <!-- Yellow badge - moved down so it's between title and border -->
+                                    <!-- Yellow badge (only visible on episode 1) - positioned inside card -->
                                     <div id="currentBadge" style="position: absolute; top: 10px; left: 15px; background: rgba(255, 215, 0, 0.15); color: #8B6B2A; padding: 0.15rem 0.7rem; border-radius: 20px; font-size: 0.65rem; font-weight: 700; border: 1px solid rgba(255, 215, 0, 0.3); display: flex; align-items: center; text-transform: uppercase; letter-spacing: 0.5px; z-index: 5;">✨ CURRENTLY LISTENING</div>
                                     
-                                    <div style="font-weight: 600; font-size: 0.95rem; margin: 1.8rem 0 0.25rem 0;">
+                                    <div style="font-weight: 600; font-size: 0.95rem; margin: ${currentEpisode === 0 ? '1.8rem' : '0'} 0 0.25rem 0;" id="episodeTitleContainer">
                                         <a href="#" id="episodeLink" target="_blank" style="color: #0A192F; text-decoration: none;">Detecting Cheating in Chess</a>
                                     </div>
                                     <div style="font-size: 0.7rem; color: #6c757d;" id="episodeDate">May 2015 · 44 min</div>
