@@ -1420,5 +1420,90 @@
         window.addEventListener('scroll', updateActiveLink);
         window.addEventListener('load', updateActiveLink);
     </script>
+<script>
+// ===== PODCAST SWIPER =====
+const episodes = [
+    { title: "Detecting Cheating in Chess", date: "May 2015 · 44 min", link: "https://open.spotify.com/episode/4ONatSHw5XzYSMtXSMGWlu" },
+    { title: "Shakespeare, Abiogenesis, and Exoplanets", date: "Sep 2015 · 58 min", link: "https://open.spotify.com/episode/5tmFTOmrJ2OxXgBn3MZEGu?si=bc3531cbcfef4711" },
+    { title: "The Library Problem", date: "Mar 2016 · 41 min", link: "https://open.spotify.com/episode/6hRP9neRVpHg90M7nMbZyI?si=62bbb8b1a736428e" },
+    { title: "Auditing Algorithms", date: "Oct 2024 · 53 min", link: "https://open.spotify.com/episode/0okKP8a9zjIoHyEl2oehkN?si=b845657e066a48aa" }
+];
+let currentEpisode = 0;
+function updateEpisode() {
+    const link = document.getElementById('episodeLink');
+    const date = document.getElementById('episodeDate');
+    const counter = document.getElementById('episodeCounter');
+    const badge = document.getElementById('currentBadge');
+    const card = document.getElementById('episodeCard');
+    if (!link || !date || !counter || !badge || !card) return;
+    link.innerText = episodes[currentEpisode].title;
+    link.href = episodes[currentEpisode].link;
+    date.innerText = episodes[currentEpisode].date;
+    counter.innerText = `${currentEpisode + 1}/4`;
+    badge.style.display = currentEpisode === 0 ? 'flex' : 'none';
+    card.style.background = currentEpisode === 0 ? 'rgba(255, 215, 0, 0.05)' : 'rgba(42, 107, 124, 0.05)';
+}
+function nextEpisode() { currentEpisode = (currentEpisode + 1) % 4; updateEpisode(); }
+function prevEpisode() { currentEpisode = (currentEpisode - 1 + 4) % 4; updateEpisode(); }
+
+// ===== DATA POINT GENERATOR =====
+const dataPoints = [
+    "🎓 I scored 91% in my Probability & Statistics module – confidence intervals are genuinely my thing.",
+    "📈 I've been teaching GCSE Maths for over 3 years and helped one student jump from a U to a Grade 5.",
+    "🏆 My team won 'Best Overall Presentation' at the QMUL Hackathon for our AI Bias Auditor project.",
+    "💻 I vibe-coded this entire website in under 12 hours. Yes, it has bugs. No, I don't mind.",
+    "📊 The BILLY bookcase has sold over 40 million units since 1979. Stacked flat, they'd reach 17x higher than Mount Everest.",
+    "📻 I listen to the Data Skeptic podcast while commuting – current obsession: algorithmic bias.",
+    "🎭 'Though this be madness, yet there is method in't' is my coding motto.",
+    "⚡ I'm open for internships now and placement in 2027-2028 – let's chat!",
+    "🤖 For our AI Bias Auditor project, we built and compared 3 machine learning models: Logistic Regression, Random Forest, and Decision Tree – all trained to predict job placements.",
+    "📉 Our analysis in the AI Bias Auditor project showed that AI can amplify existing societal disparities – even when the original data is fair."
+];
+let lastDataIndex = 2;
+const dataPointElement = document.getElementById('dataPoint');
+if (dataPointElement) { dataPointElement.innerHTML = dataPoints[2]; }
+function generateDataPoint() {
+    let newIndex;
+    do { newIndex = Math.floor(Math.random() * dataPoints.length); } while (newIndex === lastDataIndex);
+    lastDataIndex = newIndex;
+    const el = document.getElementById('dataPoint');
+    if (el) el.innerHTML = dataPoints[lastDataIndex];
+}
+
+// ===== COFFEE POWER METER =====
+let coffeeCount = 0, codeCount = 0, powerLevel = 0, isIncreasing = true;
+const messages = {
+    0: "> Help I'm stuck in an infinite loop 🔄",
+    20: "> Coffee levels: Critical ☠️",
+    25: "> Running on fumes 🥱",
+    40: "> To code or not to code, that is the question 🎭",
+    50: "> My code doesn't work and I don't know why 😭",
+    75: "> My code WORKS now, and I don't know why 🤷",
+    80: "> The vibes are vibing",
+    100: "> 95% confidence interval: [works, doesn't work]"
+};
+function updateCoffee() {
+    const p = document.getElementById('coffeePercent'); if(p) p.innerText = powerLevel+'%';
+    const m = document.getElementById('coffeeMeter'); if(m) m.style.width = powerLevel+'%';
+    const c = document.getElementById('coffeeCount'); if(c) c.innerText = coffeeCount;
+    const l = document.getElementById('codeCount'); if(l) l.innerText = codeCount;
+    const msg = document.getElementById('message'); if(msg) msg.innerText = messages[powerLevel] || "> " + ["In the zone ⚡","Debug mode: ON 🐛","10/10 would vibe code again ✨","This is fine 🔥","Vibe level: immaculate ✨"][Math.floor(Math.random()*5)];
+    const add = document.getElementById('addCoffeeBtn'); const write = document.getElementById('writeCodeBtn');
+    const phase = document.getElementById('phaseIndicator');
+    if (powerLevel >= 100) {
+        if(add) add.disabled = true; if(write) write.disabled = false; isIncreasing = false;
+        if(phase) phase.innerText = "💻 Code phase: Drain energy to 0%";
+    } else if (powerLevel <= 0) {
+        if(add) add.disabled = false; if(write) write.disabled = true; isIncreasing = true;
+        if(phase) phase.innerText = "☕ Coffee phase: Build energy to 100%";
+    } else {
+        if(add) add.disabled = !isIncreasing; if(write) write.disabled = isIncreasing;
+    }
+}
+function addCoffee() { if (powerLevel < 100 && isIncreasing) { coffeeCount++; powerLevel = Math.min(100, powerLevel+25); updateCoffee(); } }
+function writeCode() { if (powerLevel > 0 && !isIncreasing) { codeCount += 10; powerLevel = Math.max(0, powerLevel-20); updateCoffee(); } }
+
+window.addEventListener('load', function() { updateEpisode(); updateCoffee(); });
+</script>
 </body>
 </html>
