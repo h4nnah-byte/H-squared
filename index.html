@@ -812,7 +812,20 @@
         
         @media (max-width: 800px) {
             .kpi-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.75rem;
+            }
+            
+            .kpi-card {
+                padding: 0.8rem;
+            }
+            
+            .kpi-value {
+                font-size: 1.5rem;
+            }
+            
+            .kpi-label {
+                font-size: 0.65rem;
             }
             
             .grid-cv, .grid-experience, .grid-sidebar, .contact-grid {
@@ -930,6 +943,23 @@
             
             .nav-links a {
                 font-size: 0.85rem;
+            }
+            
+            .kpi-grid {
+                grid-template-columns: 1fr !important;
+                gap: 0.75rem !important;
+            }
+            
+            .kpi-card {
+                padding: 0.8rem !important;
+            }
+            
+            .kpi-value {
+                font-size: 1.5rem !important;
+            }
+            
+            .kpi-label {
+                font-size: 0.7rem !important;
             }
         }
     </style>
