@@ -384,6 +384,9 @@
             display: grid;
             grid-template-columns: 1.8fr 1.2fr;
             gap: 1.5rem;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
         }
         
         .grid-experience {
@@ -809,10 +812,21 @@
         @media (max-width: 900px) {
             .container {
                 padding: 1.5rem;
+                width: 100%;
+                box-sizing: border-box;
             }
             
             .grid-cv, .grid-experience, .grid-sidebar {
                 gap: 1rem;
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+            
+            .card-content {
+                padding: 1.5rem;
+                width: 100%;
+                box-sizing: border-box;
             }
         }
         
